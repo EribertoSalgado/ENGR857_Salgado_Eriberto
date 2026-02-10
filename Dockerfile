@@ -1,4 +1,4 @@
-FROM osrf/ros:humble-desktop:humble
+FROM osrf/ros:humble-desktop
 RUN apt-get update && apt-get install -y vim && apt-get install tree
 RUN apt install -y python3-pip
 RUN apt-get install dos2unix
