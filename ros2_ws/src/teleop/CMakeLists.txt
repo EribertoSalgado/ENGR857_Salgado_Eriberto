@@ -10,6 +10,9 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(control_msgs REQUIRED)
+
 
 # Required for Quanser SDK
 add_compile_definitions(_NVIDIA)
@@ -30,6 +33,8 @@ ament_target_dependencies(qbot_platform_driver_interface
   rclcpp
   std_msgs
   geometry_msgs
+  sensor_msgs
+  control_msgs
 )
 
 # -------------------------
@@ -60,6 +65,10 @@ install(TARGETS
 )
 
 install(DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(DIRECTORY rt_models
   DESTINATION share/${PROJECT_NAME}
 )
 
