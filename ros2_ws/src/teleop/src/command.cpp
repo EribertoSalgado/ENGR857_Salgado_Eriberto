@@ -1,4 +1,4 @@
-// Controller node to read joystick inputs and publish them as Twist messages for teleoperation
+// Half Speed, X to kill
 #include "rclcpp/rclcpp.hpp"
 
 #include <geometry_msgs/msg/twist.hpp>
@@ -12,26 +12,14 @@
 using namespace std::chrono_literals;
 
 bool node_running = false;
+
 // joystick inputs
 t_double LLA = 0.0;
-t_double LLO = 0.0;
-t_double LT  = 0.0;
-t_double RLA = 0.0;
-t_double RLO = 0.0;
 t_double RT  = 0.0;
-t_boolean flag_z  = false;
-t_boolean flag_rz = false;
 t_double A  = 0;
-t_double B  = 0;
-t_double X  = 0;
-t_double Y  = 0;
+t_double X  = 0;   // <-- X button
 t_double LB = 0.0;
 t_double RB = 0.0;
-t_double up = 0.0;
-t_double down  = 0.0;
-t_double left  = 0.0;
-t_double right = 0.0;
-t_double command[2];
 t_double throttle;
 t_double steering;
 
@@ -51,94 +39,97 @@ t_boolean is_new;
 
 class CommandPublisher : public rclcpp::Node
 {
-    public:
+public:
     CommandPublisher()
     : Node("joystick_publisher")
     {
 
-
     command_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-    // try to connect to joystick
+
 	result = game_controller_open(controller_number, buffer_size, deadzone, saturation, auto_center,
                      max_force_feedback_effects, force_feedback_gain, &gamepad);
 
     auto timer_callback =
         [this]() -> void {
 
-        rclcpp::Time currentTime;
-
         if (result >= 0)
-	        {
-
+	    {
             while (rclcpp::ok())
             {
                 result = game_controller_poll(gamepad, &data, &is_new);
+
                 LLA = -1*data.x;
-                RT = data.rz;
-                A = (t_uint8)(data.buttons & (1 << 0));
+                RT  = data.rz;
+
+                A  = (t_uint8)(data.buttons & (1 << 0));
+                X  = (t_uint8)((data.buttons & (1 << 2))/4);   // <-- READ X BUTTON
                 LB = (t_uint8)((data.buttons & (1 << 4))/16);
+                RB = (t_uint8)((data.buttons & (1 << 5))/32);
 
-                // Only enable motion when the QBot is being armed
+                // ✅ KILL SWITCH (X button)
+                if (X == 1)
+                {
+                    geometry_msgs::msg::Twist stop_msg;
+                    stop_msg.linear.x = 0;
+                    stop_msg.angular.z = 0;
+                    this->command_publisher_->publish(stop_msg);
+
+                    game_controller_close(gamepad);
+                    rclcpp::shutdown();
+                    return;
+                }
+
+                // Only enable motion when armed
                 if (LB == 1)
-                    {
-                        //not moving in reverse
-                        if (RT == 0){
-                            throttle = 0;
-                        }
-                        else{
-                            throttle = 0.3*(0.5+0.5*RT);
-                        };
-
-                        steering = 0.5*LLA;
-                        if (A == 1)
-                        {
-                            throttle = -throttle;
-                            steering = steering;
-
-                        };
-
+                {
+                    if (RT == 0){
+                        throttle = 0;
                     }
+                    else{
+                        throttle = 0.3*(0.5+0.5*RT);
+                    };
+
+                    steering = 0.5*LLA;
+
+                    if (A == 1)
+                    {
+                        throttle = -throttle;
+                    };
+
+                    if (RB == 1)
+                    {
+                        throttle = 0.5 * throttle;
+                    }
+                }
                 else
                 {
-                throttle = 0;
-                steering = 0;
+                    throttle = 0;
+                    steering = 0;
                 }
 
                 geometry_msgs::msg::Twist twist;
                 twist.linear.x = throttle;
                 twist.angular.z = steering;
                 this->command_publisher_->publish(twist);
-
             }
+        };
 
-
-
-            };
         game_controller_close(gamepad);
-
-
-
-
     };
 
     timer_ = this->create_wall_timer(100ms, timer_callback);
     };
 
-    private:
-        rclcpp::TimerBase::SharedPtr timer_;
-        rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr command_publisher_;
-
+private:
+    rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr command_publisher_;
 };
 
 
 int main(int argc, char ** argv)
 {
-
-
-    // Node creation
     rclcpp::init(argc, argv);
     rclcpp::spin(std::make_shared<CommandPublisher>());
     rclcpp::shutdown();
-
     return 0;
 }
