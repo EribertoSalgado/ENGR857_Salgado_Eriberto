@@ -1,0 +1,3 @@
+[35m[1mScanning dependencies of target command[0m
+[ 50%] Built target qbot_platform_driver_interface
+[ 75%] [32mBuilding CXX object CMakeFiles/command.dir/src/command.cpp.o[0m

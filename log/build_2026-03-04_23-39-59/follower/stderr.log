@@ -1,0 +1,7 @@
+[01m[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:[m[K In constructor ‘[01m[KFollowerNode::FollowerNode()[m[K’:
+[01m[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:39:81:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+   39 |         angle_max_deg_       = this->declare_parameter<double>("angle_max_deg", [01;31m[K)[m[K; // default: full 360
+      |                                                                                 [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/command.dir/build.make:63: CMakeFiles/command.dir/src/command.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/command.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

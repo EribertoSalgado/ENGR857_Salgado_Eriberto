@@ -1,0 +1,159 @@
+[0.000000] (-) TimerEvent: {}
+[0.000599] (-) JobUnselected: {'identifier': 'cv_bridge'}
+[0.000881] (-) JobUnselected: {'identifier': 'image_geometry'}
+[0.001066] (-) JobUnselected: {'identifier': 'opencv_tests'}
+[0.001346] (-) JobUnselected: {'identifier': 'py_pubsub'}
+[0.001569] (-) JobUnselected: {'identifier': 'qarm_interfaces'}
+[0.001655] (-) JobUnselected: {'identifier': 'qarm_nodes'}
+[0.001808] (-) JobUnselected: {'identifier': 'qbot_platform'}
+[0.001881] (-) JobUnselected: {'identifier': 'qbot_platform'}
+[0.001927] (-) JobUnselected: {'identifier': 'qcar'}
+[0.001989] (-) JobUnselected: {'identifier': 'qcar'}
+[0.002048] (-) JobUnselected: {'identifier': 'qcar'}
+[0.002411] (-) JobUnselected: {'identifier': 'qcar2_autonomy'}
+[0.002482] (-) JobUnselected: {'identifier': 'qcar2_interfaces'}
+[0.002596] (-) JobUnselected: {'identifier': 'qcar2_nodes'}
+[0.002660] (-) JobUnselected: {'identifier': 'rplidar_ros'}
+[0.002702] (-) JobUnselected: {'identifier': 'teleop'}
+[0.002742] (-) JobUnselected: {'identifier': 'vision_opencv'}
+[0.002787] (follower) JobQueued: {'identifier': 'follower', 'dependencies': OrderedDict()}
+[0.002837] (follower) JobStarted: {'identifier': 'follower'}
+[0.023144] (follower) JobProgress: {'identifier': 'follower', 'progress': 'cmake'}
+[0.024594] (follower) JobProgress: {'identifier': 'follower', 'progress': 'build'}
+[0.025884] (follower) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower', 'env': OrderedDict([('PYTHON_BASIC_REPL', '1'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'nvidia'), ('SSH_CLIENT', '192.168.2.107 59203 22'), ('XDG_SESSION_TYPE', 'tty'), ('GIT_ASKPASS', '/home/nvidia/.vscode-server/cli/servers/Stable-0870c2a0c7c0564e7631bfed2675573a94ba4455/server/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda/lib64:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda/lib64:/usr/local/cuda/lib64:'), ('BROWSER', '/home/nvidia/.vscode-server/cli/servers/Stable-0870c2a0c7c0564e7631bfed2675573a94ba4455/server/bin/helpers/browser.sh'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/nvidia'), ('TERM_PROGRAM_VERSION', '1.110.0'), ('VSCODE_IPC_HOOK_CLI', '/run/user/1000/vscode-ipc-a0ca20e6-1b0e-41f7-be79-e9b6f8926341.sock'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/home/nvidia/.vscode-server/cli/servers/Stable-0870c2a0c7c0564e7631bfed2675573a94ba4455/server/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/home/nvidia/.vscode-server/cli/servers/Stable-0870c2a0c7c0564e7631bfed2675573a94ba4455/server/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/nvidia/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-arm64/bundled/libs/debugpy'), ('VSCODE_PYTHON_AUTOACTIVATE_GUARD', '1'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/home/nvidia/ENGR857_Salgado_Eriberto/install:/home/nvidia/ros2/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '6'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/usr/local/cuda/bin:/home/nvidia/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/nvidia/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/nvidia/.vscode-server/cli/servers/Stable-0870c2a0c7c0564e7631bfed2675573a94ba4455/server/bin/remote-cli:/home/nvidia/.local/bin:/opt/ros/humble/bin:/usr/local/cuda/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nvidia/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-arm64/bundled/scripts/noConfigScripts'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('VSCODE_DEBUGPY_ADAPTER_ENDPOINTS', '/home/nvidia/.vscode-server/extensions/ms-python.debugpy-2025.18.0-linux-arm64/.noConfigDebugAdapterEndpoints/endpoint-94c724c74a19b6a4.txt'), ('LANG', 'en_US.UTF-8'), ('PYTHONSTARTUP', '/home/nvidia/.vscode-server/data/User/workspaceStorage/03ee4fee12e9828815e3c91c82f5e76c/ms-python.python/pythonrc.py'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-21bebc2a1b.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/home/nvidia/ENGR857_Salgado_Eriberto/install/follower:/home/nvidia/ros2/install/teleop:/home/nvidia/ros2/install/qbot_platform:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.2.107 59203 192.168.2.59 22'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/Documents/Quanser/libraries/python'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/nvidia/ENGR857_Salgado_Eriberto/install/follower:/home/nvidia/ros2/install/teleop:/home/nvidia/ros2/install/qbot_platform:/opt/ros/humble')]), 'shell': False}
+[0.099066] (-) TimerEvent: {}
+[0.151164] (follower) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/command.dir/src/command.cpp.o\x1b[0m\n'}
+[0.161016] (follower) StdoutLine: {'line': b'[ 75%] Built target qbot_platform_driver_interface\n'}
+[0.199134] (-) TimerEvent: {}
+[0.299616] (-) TimerEvent: {}
+[0.400073] (-) TimerEvent: {}
+[0.500693] (-) TimerEvent: {}
+[0.601352] (-) TimerEvent: {}
+[0.701952] (-) TimerEvent: {}
+[0.802651] (-) TimerEvent: {}
+[0.903328] (-) TimerEvent: {}
+[1.004352] (-) TimerEvent: {}
+[1.105462] (-) TimerEvent: {}
+[1.206518] (-) TimerEvent: {}
+[1.307601] (-) TimerEvent: {}
+[1.408740] (-) TimerEvent: {}
+[1.510029] (-) TimerEvent: {}
+[1.611058] (-) TimerEvent: {}
+[1.712117] (-) TimerEvent: {}
+[1.813173] (-) TimerEvent: {}
+[1.914133] (-) TimerEvent: {}
+[2.015178] (-) TimerEvent: {}
+[2.116248] (-) TimerEvent: {}
+[2.217435] (-) TimerEvent: {}
+[2.318540] (-) TimerEvent: {}
+[2.419619] (-) TimerEvent: {}
+[2.520714] (-) TimerEvent: {}
+[2.621692] (-) TimerEvent: {}
+[2.722719] (-) TimerEvent: {}
+[2.823709] (-) TimerEvent: {}
+[2.924726] (-) TimerEvent: {}
+[3.025486] (-) TimerEvent: {}
+[3.126201] (-) TimerEvent: {}
+[3.226904] (-) TimerEvent: {}
+[3.327603] (-) TimerEvent: {}
+[3.428732] (-) TimerEvent: {}
+[3.529694] (-) TimerEvent: {}
+[3.630816] (-) TimerEvent: {}
+[3.731947] (-) TimerEvent: {}
+[3.833045] (-) TimerEvent: {}
+[3.934169] (-) TimerEvent: {}
+[4.035274] (-) TimerEvent: {}
+[4.136428] (-) TimerEvent: {}
+[4.237566] (-) TimerEvent: {}
+[4.338499] (-) TimerEvent: {}
+[4.439375] (-) TimerEvent: {}
+[4.540269] (-) TimerEvent: {}
+[4.641157] (-) TimerEvent: {}
+[4.742033] (-) TimerEvent: {}
+[4.842929] (-) TimerEvent: {}
+[4.943823] (-) TimerEvent: {}
+[5.044752] (-) TimerEvent: {}
+[5.145728] (-) TimerEvent: {}
+[5.246661] (-) TimerEvent: {}
+[5.347802] (-) TimerEvent: {}
+[5.448735] (-) TimerEvent: {}
+[5.549641] (-) TimerEvent: {}
+[5.650482] (-) TimerEvent: {}
+[5.751375] (-) TimerEvent: {}
+[5.792883] (follower) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[KFollowerNode::FollowerNode()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.794120] (follower) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:39:81:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected primary-expression before \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[5.794857] (follower) StderrLine: {'line': b'   39 |         angle_max_deg_       = this->declare_parameter<double>("angle_max_deg", \x1b[01;31m\x1b[K)\x1b[m\x1b[K; // default: full 360\n'}
+[5.795563] (follower) StderrLine: {'line': b'      |                                                                                 \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[5.851536] (-) TimerEvent: {}
+[5.952853] (-) TimerEvent: {}
+[6.054094] (-) TimerEvent: {}
+[6.155329] (-) TimerEvent: {}
+[6.256544] (-) TimerEvent: {}
+[6.357816] (-) TimerEvent: {}
+[6.459118] (-) TimerEvent: {}
+[6.560408] (-) TimerEvent: {}
+[6.661712] (-) TimerEvent: {}
+[6.762963] (-) TimerEvent: {}
+[6.864161] (-) TimerEvent: {}
+[6.965121] (-) TimerEvent: {}
+[7.066042] (-) TimerEvent: {}
+[7.166958] (-) TimerEvent: {}
+[7.267878] (-) TimerEvent: {}
+[7.369090] (-) TimerEvent: {}
+[7.470207] (-) TimerEvent: {}
+[7.571154] (-) TimerEvent: {}
+[7.672288] (-) TimerEvent: {}
+[7.773432] (-) TimerEvent: {}
+[7.874560] (-) TimerEvent: {}
+[7.975696] (-) TimerEvent: {}
+[8.076848] (-) TimerEvent: {}
+[8.177983] (-) TimerEvent: {}
+[8.279126] (-) TimerEvent: {}
+[8.380067] (-) TimerEvent: {}
+[8.480998] (-) TimerEvent: {}
+[8.581924] (-) TimerEvent: {}
+[8.682836] (-) TimerEvent: {}
+[8.783737] (-) TimerEvent: {}
+[8.884949] (-) TimerEvent: {}
+[8.985890] (-) TimerEvent: {}
+[9.086878] (-) TimerEvent: {}
+[9.187849] (-) TimerEvent: {}
+[9.288807] (-) TimerEvent: {}
+[9.389771] (-) TimerEvent: {}
+[9.490697] (-) TimerEvent: {}
+[9.591607] (-) TimerEvent: {}
+[9.692542] (-) TimerEvent: {}
+[9.793520] (-) TimerEvent: {}
+[9.894504] (-) TimerEvent: {}
+[9.995485] (-) TimerEvent: {}
+[10.096428] (-) TimerEvent: {}
+[10.197358] (-) TimerEvent: {}
+[10.298285] (-) TimerEvent: {}
+[10.399225] (-) TimerEvent: {}
+[10.500189] (-) TimerEvent: {}
+[10.601150] (-) TimerEvent: {}
+[10.702125] (-) TimerEvent: {}
+[10.803073] (-) TimerEvent: {}
+[10.903987] (-) TimerEvent: {}
+[11.004951] (-) TimerEvent: {}
+[11.105851] (-) TimerEvent: {}
+[11.206765] (-) TimerEvent: {}
+[11.307678] (-) TimerEvent: {}
+[11.408588] (-) TimerEvent: {}
+[11.509529] (-) TimerEvent: {}
+[11.610416] (-) TimerEvent: {}
+[11.711301] (-) TimerEvent: {}
+[11.812173] (-) TimerEvent: {}
+[11.913112] (-) TimerEvent: {}
+[12.014013] (-) TimerEvent: {}
+[12.114917] (-) TimerEvent: {}
+[12.215817] (-) TimerEvent: {}
+[12.316735] (-) TimerEvent: {}
+[12.417658] (-) TimerEvent: {}
+[12.458016] (follower) StderrLine: {'line': b'make[2]: *** [CMakeFiles/command.dir/build.make:63: CMakeFiles/command.dir/src/command.cpp.o] Error 1\n'}
+[12.458978] (follower) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/command.dir/all] Error 2\n'}
+[12.459389] (follower) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[12.463430] (follower) CommandEnded: {'returncode': 2}
+[12.517875] (-) TimerEvent: {}
+[12.550102] (follower) JobEnded: {'identifier': 'follower', 'rc': 2}
+[12.561135] (-) EventReactorShutdown: {}

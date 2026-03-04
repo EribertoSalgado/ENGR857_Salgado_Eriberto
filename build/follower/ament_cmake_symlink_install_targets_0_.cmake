@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/home/nvidia/ENGR857_Salgado_Eriberto/build/follower/qbot_platform_driver_interface" "/home/nvidia/ENGR857_Salgado_Eriberto/build/follower/command" "TARGETS" "qbot_platform_driver_interface" "command" "DESTINATION" "lib/follower")

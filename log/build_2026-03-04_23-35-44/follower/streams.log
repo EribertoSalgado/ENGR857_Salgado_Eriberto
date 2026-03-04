@@ -1,0 +1,30 @@
+[0.024s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6
+[0.119s] [35m[1mScanning dependencies of target command[0m
+[0.157s] [ 50%] Built target qbot_platform_driver_interface
+[0.197s] [ 75%] [32mBuilding CXX object CMakeFiles/command.dir/src/command.cpp.o[0m
+[20.646s] [100%] [32m[1mLinking CXX executable command[0m
+[21.499s] [100%] Built target command
+[21.522s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6
+[21.597s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/follower
+[21.613s] -- Install configuration: ""
+[21.614s] -- Execute custom install script
+[21.615s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/lib/follower/qbot_platform_driver_interface
+[21.615s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/lib/follower/command
+[21.616s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/launch/teleop_manual_drive_launch.py
+[21.617s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/rt_models/qbot_platform_driver_physical.rt-linux_qbot_platform
+[21.617s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/ament_index/resource_index/package_run_dependencies/follower
+[21.618s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/ament_index/resource_index/parent_prefix_path/follower
+[21.618s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/environment/ament_prefix_path.sh
+[21.619s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/environment/ament_prefix_path.dsv
+[21.619s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/environment/path.sh
+[21.620s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/environment/path.dsv
+[21.620s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/local_setup.bash
+[21.620s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/local_setup.sh
+[21.621s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/local_setup.zsh
+[21.621s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/local_setup.dsv
+[21.622s] -- Symlinking: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/package.dsv
+[21.640s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/ament_index/resource_index/packages/follower
+[21.641s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/cmake/followerConfig.cmake
+[21.641s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/cmake/followerConfig-version.cmake
+[21.642s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/follower/share/follower/package.xml
+[21.647s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/follower

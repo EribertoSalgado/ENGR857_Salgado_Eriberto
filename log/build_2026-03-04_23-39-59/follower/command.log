@@ -1,0 +1,2 @@
+Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6
+Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6

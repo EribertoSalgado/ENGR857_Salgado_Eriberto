@@ -1,0 +1,11 @@
+[0.025s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6
+[0.149s] [ 25%] [32mBuilding CXX object CMakeFiles/command.dir/src/command.cpp.o[0m
+[0.158s] [ 75%] Built target qbot_platform_driver_interface
+[5.791s] [01m[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:[m[K In constructor ‘[01m[KFollowerNode::FollowerNode()[m[K’:
+[5.792s] [01m[K/home/nvidia/ENGR857_Salgado_Eriberto/ros2_ws/src/follower/src/command.cpp:39:81:[m[K [01;31m[Kerror: [m[Kexpected primary-expression before ‘[01m[K)[m[K’ token
+[5.792s]    39 |         angle_max_deg_       = this->declare_parameter<double>("angle_max_deg", [01;31m[K)[m[K; // default: full 360
+[5.793s]       |                                                                                 [01;31m[K^[m[K
+[12.456s] make[2]: *** [CMakeFiles/command.dir/build.make:63: CMakeFiles/command.dir/src/command.cpp.o] Error 1
+[12.456s] make[1]: *** [CMakeFiles/Makefile2:107: CMakeFiles/command.dir/all] Error 2
+[12.457s] make: *** [Makefile:141: all] Error 2
+[12.461s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/follower' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/follower -- -j6 -l6
