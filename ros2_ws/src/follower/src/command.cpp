@@ -23,8 +23,8 @@ public:
     {
         // Tunable parameters
         scan_topic_          = this->declare_parameter<std::string>("scan_topic", "scan");
-        desired_distance_    = this->declare_parameter<double>("desired_distance", 0.3048); // ~1 foot
-        stop_distance_       = this->declare_parameter<double>("stop_distance", 2.0);
+        desired_distance_    = this->declare_parameter<double>("desired_distance", 0.3); // 1 foot = 0.3048 m 
+        stop_distance_       = this->declare_parameter<double>("stop_distance", 0.6); // beyond this → stop (no target)
         min_detect_distance_ = this->declare_parameter<double>("min_detect_distance", 0.20);
 
         linear_kp_           = this->declare_parameter<double>("linear_kp", 0.6);
@@ -34,14 +34,16 @@ public:
         max_reverse_speed_   = this->declare_parameter<double>("max_reverse_speed", 0.25);
         max_angular_speed_   = this->declare_parameter<double>("max_angular_speed", 1.2);
 
-        front_fov_           = this->declare_parameter<double>("front_fov", 90); // +/-90 deg
+        // Angular window to consider targets (degrees, normalized to [0,360) after offset).
+        angle_min_deg_       = this->declare_parameter<double>("angle_min_deg", 0);   // default: full 360
+        angle_max_deg_       = this->declare_parameter<double>("angle_max_deg", ); // default: full 360
         angle_deadband_      = this->declare_parameter<double>("angle_deadband", 0.05);
         distance_deadband_   = this->declare_parameter<double>("distance_deadband", 0.05);
         turn_slowdown_gain_  = this->declare_parameter<double>("turn_slowdown_gain", 0.5);
         invert_angular_      = this->declare_parameter<bool>("invert_angular", false);
-        enable_turning_      = this->declare_parameter<bool>("enable_turning", false); // start with straight-line only
+        enable_turning_      = this->declare_parameter<bool>("enable_turning", true); // turn to
         invert_linear_       = this->declare_parameter<bool>("invert_linear", false);
-        angle_offset_        = this->declare_parameter<double>("angle_offset", 0); // radians, rotate scan frame to align front
+        angle_offset_        = this->declare_parameter<double>("angle_offset", -90); // radians, rotate scan frame to align front
 
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
@@ -82,8 +84,23 @@ private:
 
             double angle = scan->angle_min + i * scan->angle_increment;
             double adj_angle = angle + angle_offset_; // compensate mounting rotation
-            if (std::abs(adj_angle) > front_fov_)
-                continue; // ignore objects far off to the side/back
+            adj_angle = std::atan2(std::sin(adj_angle), std::cos(adj_angle)); // normalize to [-pi, pi]
+            double angle_deg = adj_angle * 57.29577951308232; // rad → deg
+            if (angle_deg < 0.0)
+                angle_deg += 360.0; // map to [0, 360)
+
+            bool in_window;
+            if (angle_min_deg_ <= angle_max_deg_)
+            {
+                in_window = (angle_deg >= angle_min_deg_ && angle_deg <= angle_max_deg_);
+            }
+            else
+            {
+                // handle wrap-around windows (e.g., 300° to 60°)
+                in_window = (angle_deg >= angle_min_deg_ || angle_deg <= angle_max_deg_);
+            }
+            if (!in_window)
+                continue; // ignore returns outside the allowed angular sector
 
             if (r < min_detect_distance_ || r > stop_distance_)
                 continue; // too close (likely ground/robot) or beyond stop band
@@ -161,7 +178,8 @@ private:
     double max_forward_speed_;
     double max_reverse_speed_;
     double max_angular_speed_;
-    double front_fov_;
+    double angle_min_deg_;
+    double angle_max_deg_;
     double angle_deadband_;
     double distance_deadband_;
     double turn_slowdown_gain_;
