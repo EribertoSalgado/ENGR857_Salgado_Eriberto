@@ -1,11 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 project(follower)
 
-# Use C++17 for std::clamp and structured bindings
-if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD 17)
-endif()
-
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -43,15 +38,15 @@ ament_target_dependencies(qbot_platform_driver_interface
 )
 
 # -------------------------
-# Follower Node
+# Gamepad Command Node
 # -------------------------
-add_executable(follower src/command.cpp)
+add_executable(command src/command.cpp)
 
-ament_target_dependencies(follower
+ament_target_dependencies(command
   rclcpp
   geometry_msgs
-  sensor_msgs
   std_msgs
+  sensor_msgs
 )
 
 # -------------------------
@@ -59,7 +54,7 @@ ament_target_dependencies(follower
 # -------------------------
 install(TARGETS
   qbot_platform_driver_interface
-  follower
+  command
   DESTINATION lib/${PROJECT_NAME}
 )
 

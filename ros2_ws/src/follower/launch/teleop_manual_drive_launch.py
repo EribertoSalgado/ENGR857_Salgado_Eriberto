@@ -9,6 +9,16 @@ from launch_ros.substitutions import FindPackageShare
 from launch.substitutions import PathJoinSubstitution
 
 
+def start_lidar_node():
+    # Assumes qbot_platform package is built in the workspace.
+    return Node(
+        package='qbot_platform',
+        executable='lidar',
+        name='lidar',
+        output='screen'
+    )
+
+
 def exit_driver_cb(context):
     subprocess.run(
         'quarc_run -q -t tcpip://localhost:17000 qbot_platform_driver_physical',
@@ -42,15 +52,16 @@ def generate_launch_description():
         parameters=[{'arm_robot': True}],
     )
 
-    follower_node = Node(
+    joystick_node = Node(
         package='follower',
-        executable='follower',
-        name='FollowerController'
+        executable='command',
+        name='JoystickCommands'
     )
 
     return LaunchDescription([
         rt_model_start,
-        follower_node,
+        start_lidar_node(),
+        joystick_node,
 
         RegisterEventHandler(
             OnProcessExit(
