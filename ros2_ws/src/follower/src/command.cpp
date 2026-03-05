@@ -15,6 +15,11 @@
 
 using namespace std::chrono_literals;
 
+namespace
+{
+constexpr double kDegToRad = 0.017453292519943295769; // pi / 180
+}
+
 class FollowerNode : public rclcpp::Node
 {
 public:
@@ -34,7 +39,9 @@ public:
         max_reverse_speed_   = this->declare_parameter<double>("max_reverse_speed", 0.25);
         max_angular_speed_   = this->declare_parameter<double>("max_angular_speed", 1.2);
 
-        front_fov_           = this->declare_parameter<double>("front_fov", 90); // +/-90 deg // Changes how wide you look
+        // Limit scan processing to a specific angular sector (degrees in the scan frame, after angle_offset_)
+        view_angle_min_rad_  = this->declare_parameter<double>("view_angle_min_deg", 0) * kDegToRad;
+        view_angle_max_rad_  = this->declare_parameter<double>("view_angle_max_deg", 180) * kDegToRad;
         angle_deadband_      = this->declare_parameter<double>("angle_deadband", 0.05);
         distance_deadband_   = this->declare_parameter<double>("distance_deadband", 0.05);
         turn_slowdown_gain_  = this->declare_parameter<double>("turn_slowdown_gain", 0.5);
@@ -82,8 +89,8 @@ private:
 
             double angle = scan->angle_min + i * scan->angle_increment;
             double adj_angle = angle + angle_offset_; // compensate mounting rotation
-            if (std::abs(adj_angle) > front_fov_)
-                continue; // ignore objects far off to the side/back
+            if (adj_angle < view_angle_min_rad_ || adj_angle > view_angle_max_rad_)
+                continue; // ignore returns outside the desired sector
 
             if (r < min_detect_distance_ || r > stop_distance_)
                 continue; // too close (likely ground/robot) or beyond stop band
@@ -161,7 +168,8 @@ private:
     double max_forward_speed_;
     double max_reverse_speed_;
     double max_angular_speed_;
-    double front_fov_;
+    double view_angle_min_rad_;
+    double view_angle_max_rad_;
     double angle_deadband_;
     double distance_deadband_;
     double turn_slowdown_gain_;
