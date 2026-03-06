@@ -55,7 +55,7 @@ public:
         invert_angular_      = this->declare_parameter<bool>("invert_angular", false);
         enable_turning_      = this->declare_parameter<bool>("enable_turning", true); // start with straight-line only
         invert_linear_       = this->declare_parameter<bool>("invert_linear", false);
-        angle_offset_        = this->declare_parameter<double>("angle_offset", 90); // radians, rotate scan frame to align front
+        angle_offset_        = this->declare_parameter<double>("angle_offset", 1.5708); // radians, rotate scan frame to align front
 
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
