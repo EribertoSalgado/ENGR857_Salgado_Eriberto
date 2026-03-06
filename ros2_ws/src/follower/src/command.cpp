@@ -18,6 +18,12 @@ using namespace std::chrono_literals;
 namespace
 {
 constexpr double kDegToRad = 0.017453292519943295769; // pi / 180
+
+// Wrap angle to [-pi, pi] so comparisons against symmetric FOVs work
+inline double wrapToPi(double rad)
+{
+    return std::atan2(std::sin(rad), std::cos(rad));
+}
 }
 
 class FollowerNode : public rclcpp::Node
@@ -28,9 +34,9 @@ public:
     {
         // Tunable parameters
         scan_topic_          = this->declare_parameter<std::string>("scan_topic", "scan");
-        desired_distance_    = this->declare_parameter<double>("desired_distance", 0.3048); // ~1 foot
-        stop_distance_       = this->declare_parameter<double>("stop_distance", 0.6);
-        min_detect_distance_ = this->declare_parameter<double>("min_detect_distance", 0.20);
+        desired_distance_    = this->declare_parameter<double>("desired_distance", 0.3); // ~1 foot
+        stop_distance_       = this->declare_parameter<double>("stop_distance", 1); // stop if no object within this range
+        min_detect_distance_ = this->declare_parameter<double>("min_detect_distance", 0.2);
 
         linear_kp_           = this->declare_parameter<double>("linear_kp", 0.6);
         angular_kp_          = this->declare_parameter<double>("angular_kp", 1.2);
@@ -40,15 +46,16 @@ public:
         max_angular_speed_   = this->declare_parameter<double>("max_angular_speed", 1.2);
 
         // Limit scan processing to a specific angular sector (degrees in the scan frame, after angle_offset_)
-        view_angle_min_rad_  = this->declare_parameter<double>("view_angle_min_deg", 0) * kDegToRad;
-        view_angle_max_rad_  = this->declare_parameter<double>("view_angle_max_deg", 180) * kDegToRad;
+        // Default to ±90° forward-looking window; adjust via parameters if your LiDAR is mounted differently.
+        view_angle_min_rad_  = this->declare_parameter<double>("view_angle_min_deg", -30) * kDegToRad;
+        view_angle_max_rad_  = this->declare_parameter<double>("view_angle_max_deg", 30) * kDegToRad;
         angle_deadband_      = this->declare_parameter<double>("angle_deadband", 0.05);
         distance_deadband_   = this->declare_parameter<double>("distance_deadband", 0.05);
         turn_slowdown_gain_  = this->declare_parameter<double>("turn_slowdown_gain", 0.5);
         invert_angular_      = this->declare_parameter<bool>("invert_angular", false);
-        enable_turning_      = this->declare_parameter<bool>("enable_turning", false); // start with straight-line only
+        enable_turning_      = this->declare_parameter<bool>("enable_turning", true); // start with straight-line only
         invert_linear_       = this->declare_parameter<bool>("invert_linear", false);
-        angle_offset_        = this->declare_parameter<double>("angle_offset", -1.5708); // radians, rotate scan frame to align front
+        angle_offset_        = this->declare_parameter<double>("angle_offset", 90); // radians, rotate scan frame to align front
 
         cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
         scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
@@ -88,7 +95,8 @@ private:
                 continue;
 
             double angle = scan->angle_min + i * scan->angle_increment;
-            double adj_angle = angle + angle_offset_; // compensate mounting rotation
+            // Compensate mounting rotation and wrap so 0 rad means "front"
+            double adj_angle = wrapToPi(angle + angle_offset_);
             if (adj_angle < view_angle_min_rad_ || adj_angle > view_angle_max_rad_)
                 continue; // ignore returns outside the desired sector
 
