@@ -1,29 +1,22 @@
-// LIDAR-based delivery bot controller
-// Behavior:
-//  - Maintain ~1 m distance to the closest object in front
-//  - Turn toward the object if it drifts to the side
-//  - Stop if nothing is detected within ~2 m in the forward field of view
+// Delivery bot "move forward a fixed distance" controller.
+// Default behavior: drive forward 3 feet (0.9144 m) and stop.
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
-#include <limits>
+#include <functional>
 #include <string>
 
 #include "rclcpp/rclcpp.hpp"
-#include <geometry_msgs/msg/twist.hpp>
-#include <sensor_msgs/msg/laser_scan.hpp>
+#include "geometry_msgs/msg/twist.hpp"
+#include "sensor_msgs/msg/joint_state.hpp"
 
 using namespace std::chrono_literals;
 
 namespace
 {
-constexpr double kDegToRad = 0.017453292519943295769; // pi / 180
-
-// Wrap angle to [-pi, pi] so comparisons against symmetric FOVs work
-inline double wrapToPi(double rad)
-{
-    return std::atan2(std::sin(rad), std::cos(rad));
-}
+constexpr double kFeetToMeters = 0.3048;
+constexpr double kDefaultWheelRadiusM = 3.5 * 0.0254 / 2.0; // Matches qbot_platform_driver_interface.cpp
 }
 
 class DeliveryBotNode : public rclcpp::Node
@@ -32,159 +25,121 @@ public:
     DeliveryBotNode()
     : Node("delivery_bot")
     {
-        // Tunable parameters
-        scan_topic_          = this->declare_parameter<std::string>("scan_topic", "scan");
-        desired_distance_    = this->declare_parameter<double>("desired_distance", 0.3); // ~1 foot
-        stop_distance_       = this->declare_parameter<double>("stop_distance", 1); // stop if no object within this range
-        min_detect_distance_ = this->declare_parameter<double>("min_detect_distance", 0.2);
+        joint_topic_ = this->declare_parameter<std::string>("joint_topic", "qbot_joint");
+        cmd_topic_ = this->declare_parameter<std::string>("cmd_topic", "cmd_vel");
 
-        linear_kp_           = this->declare_parameter<double>("linear_kp", 0.6);
-        angular_kp_          = this->declare_parameter<double>("angular_kp", 1.2);
+        target_distance_ft_ = this->declare_parameter<double>("target_distance_ft", 3.0);
+        forward_speed_mps_ = this->declare_parameter<double>("forward_speed_mps", 0.25);
+        min_speed_mps_ = this->declare_parameter<double>("min_speed_mps", 0.05);
+        slowdown_distance_m_ = this->declare_parameter<double>("slowdown_distance_m", 0.20);
+        wheel_radius_m_ = this->declare_parameter<double>("wheel_radius_m", kDefaultWheelRadiusM);
+        feedback_timeout_s_ = this->declare_parameter<double>("feedback_timeout_s", 0.5);
 
-        max_forward_speed_   = this->declare_parameter<double>("max_forward_speed", 0.35);
-        max_reverse_speed_   = this->declare_parameter<double>("max_reverse_speed", 0.25);
-        max_angular_speed_   = this->declare_parameter<double>("max_angular_speed", 1.2);
+        cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>(cmd_topic_, 10);
+        joint_sub_ = this->create_subscription<sensor_msgs::msg::JointState>(
+            joint_topic_, rclcpp::SensorDataQoS(),
+            std::bind(&DeliveryBotNode::jointCallback, this, std::placeholders::_1));
 
-        // Limit scan processing to a specific angular sector (degrees in the scan frame, after angle_offset_)
-        // Default to ±90° forward-looking window; adjust via parameters if your LiDAR is mounted differently.
-        view_angle_min_rad_  = this->declare_parameter<double>("view_angle_min_deg", -30) * kDegToRad;
-        view_angle_max_rad_  = this->declare_parameter<double>("view_angle_max_deg", 30) * kDegToRad;
-        angle_deadband_      = this->declare_parameter<double>("angle_deadband", 0.05);
-        distance_deadband_   = this->declare_parameter<double>("distance_deadband", 0.05);
-        turn_slowdown_gain_  = this->declare_parameter<double>("turn_slowdown_gain", 0.5);
-        invert_angular_      = this->declare_parameter<bool>("invert_angular", false);
-        enable_turning_      = this->declare_parameter<bool>("enable_turning", true); // start with straight-line only
-        invert_linear_       = this->declare_parameter<bool>("invert_linear", false);
-        angle_offset_        = this->declare_parameter<double>("angle_offset", 1.5708); // radians, rotate scan frame to align front
-
-        cmd_pub_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        scan_sub_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
-            scan_topic_, rclcpp::SensorDataQoS(),
-            std::bind(&DeliveryBotNode::scanCallback, this, std::placeholders::_1));
-
-        timer_ = this->create_wall_timer(100ms, std::bind(&DeliveryBotNode::controlLoop, this));
+        timer_ = this->create_wall_timer(50ms, std::bind(&DeliveryBotNode::controlLoop, this));
     }
 
 private:
-    void scanCallback(const sensor_msgs::msg::LaserScan::SharedPtr msg)
+    void jointCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
     {
-        latest_scan_ = msg;
+        if (msg->position.size() < 2)
+        {
+            return;
+        }
+
+        last_joint_time_ = this->get_clock()->now();
+        const double p0 = msg->position[0];
+        const double p1 = msg->position[1];
+
+        if (!have_start_)
+        {
+            start_pos0_ = p0;
+            start_pos1_ = p1;
+            have_start_ = true;
+            RCLCPP_INFO(this->get_logger(), "Got wheel encoders. Starting forward motion.");
+            return;
+        }
+
+        const double dtheta0 = p0 - start_pos0_;
+        const double dtheta1 = p1 - start_pos1_;
+        distance_traveled_m_ = wheel_radius_m_ * (dtheta0 + dtheta1) / 2.0;
     }
 
     void controlLoop()
     {
-        geometry_msgs::msg::Twist cmd; // default zeros → stop
+        geometry_msgs::msg::Twist cmd; // default zeros -> stop
 
-        if (!latest_scan_)
+        if (done_)
         {
             cmd_pub_->publish(cmd);
             return;
         }
 
-        auto scan = latest_scan_;
-
-        double best_range = std::numeric_limits<double>::infinity();
-        double best_angle = 0.0;
-        bool found_any = false;
-
-        // Find the closest valid return within the forward field of view
-        for (size_t i = 0; i < scan->ranges.size(); ++i)
+        if (!have_start_)
         {
-            double r = scan->ranges[i];
-            if (!std::isfinite(r) || r < scan->range_min || r > scan->range_max)
-                continue;
-
-            double angle = scan->angle_min + i * scan->angle_increment;
-            // Compensate mounting rotation and wrap so 0 rad means "front"
-            double adj_angle = wrapToPi(angle + angle_offset_);
-            if (adj_angle < view_angle_min_rad_ || adj_angle > view_angle_max_rad_)
-                continue; // ignore returns outside the desired sector
-
-            if (r < min_detect_distance_ || r > stop_distance_)
-                continue; // too close (likely ground/robot) or beyond stop band
-
-            found_any = true;
-            if (r < best_range)
-            {
-                best_range = r;
-                best_angle = adj_angle;
-            }
-        }
-
-        // No object within the stop_distance band → stay still
-        if (!found_any)
-        {
+            // Wait for wheel encoder feedback from the driver before moving.
             cmd_pub_->publish(cmd);
             return;
         }
 
-        // Distance control (forward/backward)
-        double distance_error = best_range - desired_distance_;
-        if (std::abs(distance_error) > distance_deadband_)
+        const rclcpp::Time now = this->get_clock()->now();
+        if ((now - last_joint_time_).seconds() > feedback_timeout_s_)
         {
-            double linear_cmd = linear_kp_ * distance_error;
-            if (linear_cmd >= 0.0)
-            {
-                cmd.linear.x = std::min(linear_cmd, max_forward_speed_);
-            }
-            else
-            {
-                cmd.linear.x = std::max(linear_cmd, -max_reverse_speed_);
-            }
+            // Safety: if feedback stops updating, stop the robot.
+            cmd_pub_->publish(cmd);
+            RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 2000, "No joint feedback. Holding stop.");
+            return;
         }
 
-        if (invert_linear_)
+        const double target_distance_m = target_distance_ft_ * kFeetToMeters;
+        const double traveled_abs_m = std::abs(distance_traveled_m_);
+        const double remaining_m = target_distance_m - traveled_abs_m;
+
+        if (remaining_m <= 0.0)
         {
-            cmd.linear.x = -cmd.linear.x;
+            done_ = true;
+            cmd_pub_->publish(cmd);
+            RCLCPP_INFO(this->get_logger(), "Reached target distance: %.3f m (%.2f ft). Stopping.", target_distance_m, target_distance_ft_);
+            return;
         }
 
-        // Heading control (turn toward the object)
-        if (enable_turning_ && std::abs(best_angle) > angle_deadband_)
+        double speed_cmd = forward_speed_mps_;
+        if (slowdown_distance_m_ > 0.0 && remaining_m < slowdown_distance_m_)
         {
-            double angular_cmd = angular_kp_ * best_angle;
-            angular_cmd = std::clamp(angular_cmd, -max_angular_speed_, max_angular_speed_);
-            if (invert_angular_)
-            {
-                angular_cmd = -angular_cmd;
-            }
-            cmd.angular.z = angular_cmd;
-
-            // Slow linear speed while turning so we don't overshoot
-            double slowdown = 1.0 / (1.0 + turn_slowdown_gain_ * std::abs(best_angle));
-            cmd.linear.x *= slowdown;
-        }
-        else
-        {
-            cmd.angular.z = 0.0; // no turning: pure forward/back distance keeping
+            const double scale = std::clamp(remaining_m / slowdown_distance_m_, 0.0, 1.0);
+            speed_cmd = std::max(min_speed_mps_, forward_speed_mps_ * scale);
         }
 
+        cmd.linear.x = std::max(0.0, speed_cmd);
+        cmd.angular.z = 0.0;
         cmd_pub_->publish(cmd);
     }
 
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
-    rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_sub_;
+    rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_sub_;
     rclcpp::TimerBase::SharedPtr timer_;
-    sensor_msgs::msg::LaserScan::SharedPtr latest_scan_;
 
     // Parameters
-    std::string scan_topic_;
-    double desired_distance_;
-    double stop_distance_;
-    double min_detect_distance_;
-    double linear_kp_;
-    double angular_kp_;
-    double max_forward_speed_;
-    double max_reverse_speed_;
-    double max_angular_speed_;
-    double view_angle_min_rad_;
-    double view_angle_max_rad_;
-    double angle_deadband_;
-    double distance_deadband_;
-    double turn_slowdown_gain_;
-    bool invert_angular_;
-    bool enable_turning_;
-    bool invert_linear_;
-    double angle_offset_;
+    std::string joint_topic_;
+    std::string cmd_topic_;
+    double target_distance_ft_{3.0};
+    double forward_speed_mps_{0.25};
+    double min_speed_mps_{0.05};
+    double slowdown_distance_m_{0.20};
+    double wheel_radius_m_{kDefaultWheelRadiusM};
+    double feedback_timeout_s_{0.5};
+
+    // State
+    bool have_start_{false};
+    bool done_{false};
+    rclcpp::Time last_joint_time_{0};
+    double start_pos0_{0.0};
+    double start_pos1_{0.0};
+    double distance_traveled_m_{0.0};
 };
 
 int main(int argc, char ** argv)
