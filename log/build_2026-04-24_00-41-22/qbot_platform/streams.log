@@ -1,0 +1,40 @@
+[0.040s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform -- -j6 -l6
+[0.322s] [ 33%] Built target command
+[0.322s] [ 33%] Built target lidar
+[0.330s] [ 50%] Built target qbot_platform_driver_interface
+[0.340s] [ 66%] Built target fixed_lidar_frame
+[0.342s] [ 83%] Built target csi
+[0.348s] [100%] Built target rgbd
+[0.383s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform -- -j6 -l6
+[0.471s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform
+[0.490s] -- Install configuration: ""
+[0.491s] -- Execute custom install script
+[0.492s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/qbot_platform_driver_interface
+[0.493s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/rgbd
+[0.494s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/lidar
+[0.494s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/csi
+[0.495s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/command
+[0.496s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/lib/qbot_platform/fixed_lidar_frame
+[0.497s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//launch/qbot_platform_cartographer_launch.py
+[0.498s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//launch/qbot_platform_launch.py
+[0.498s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//launch/qbot_platform_manual_map_launch.py
+[0.499s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//launch/qbot_platform_slam_and_nav_bringup_launch.py
+[0.499s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//rt_models/qbot_platform_driver_physical.rt-linux_qbot_platform
+[0.500s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//config/qbot_platform_2d.lua
+[0.501s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform//config/qbot_platform_slam_and_nav.yaml
+[0.501s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/ament_index/resource_index/package_run_dependencies/qbot_platform
+[0.502s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/ament_index/resource_index/parent_prefix_path/qbot_platform
+[0.502s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/environment/ament_prefix_path.sh
+[0.502s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/environment/ament_prefix_path.dsv
+[0.503s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/environment/path.sh
+[0.503s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/environment/path.dsv
+[0.505s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/local_setup.bash
+[0.506s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/local_setup.sh
+[0.507s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/local_setup.zsh
+[0.508s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/local_setup.dsv
+[0.509s] -- Symlinking: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/package.dsv
+[0.525s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/ament_index/resource_index/packages/qbot_platform
+[0.526s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/cmake/qbot_platformConfig.cmake
+[0.526s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/cmake/qbot_platformConfig-version.cmake
+[0.527s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/qbot_platform/share/qbot_platform/package.xml
+[0.535s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform

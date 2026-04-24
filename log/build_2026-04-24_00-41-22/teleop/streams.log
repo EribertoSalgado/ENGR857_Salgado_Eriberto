@@ -1,0 +1,34 @@
+[0.043s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/teleop -- -j6 -l6
+[0.343s] [ 50%] Built target command
+[0.362s] [100%] Built target qbot_platform_driver_interface
+[0.389s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --build /home/nvidia/ENGR857_Salgado_Eriberto/build/teleop -- -j6 -l6
+[0.480s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/teleop': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/teleop
+[0.500s] -- Install configuration: ""
+[0.501s] -- Execute custom install script
+[0.502s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/lib/teleop/qbot_platform_driver_interface
+[0.503s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/lib/teleop/command
+[0.504s] -- Symlinking: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/__pycache__/qbot_platform_manual_map_launch.cpython-38.pyc
+[0.525s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/qbot_platform_cartographer_launch.py
+[0.526s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/qbot_platform_launch.py
+[0.526s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/qbot_platform_manual_map_launch.py
+[0.528s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/qbot_platform_slam_and_nav_bringup_launch.py
+[0.529s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/launch/teleop_manual_drive_launch.py
+[0.530s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/rt_models/qbot_platform_driver_physical.rt-linux_qbot_platform
+[0.530s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/config/qbot_platform_2d.lua
+[0.531s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/config/qbot_platform_slam_and_nav.yaml
+[0.531s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/ament_index/resource_index/package_run_dependencies/teleop
+[0.532s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/ament_index/resource_index/parent_prefix_path/teleop
+[0.532s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/environment/ament_prefix_path.sh
+[0.533s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/environment/ament_prefix_path.dsv
+[0.533s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/environment/path.sh
+[0.534s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/environment/path.dsv
+[0.534s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/local_setup.bash
+[0.534s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/local_setup.sh
+[0.535s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/local_setup.zsh
+[0.535s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/local_setup.dsv
+[0.536s] -- Symlinking: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/package.dsv
+[0.556s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/ament_index/resource_index/packages/teleop
+[0.557s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/cmake/teleopConfig.cmake
+[0.557s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/cmake/teleopConfig-version.cmake
+[0.558s] -- Up-to-date symlink: /home/nvidia/ENGR857_Salgado_Eriberto/install/teleop/share/teleop/package.xml
+[0.598s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto/build/teleop' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/ros2/install/qbot_follower:/opt/ros/humble /usr/bin/cmake --install /home/nvidia/ENGR857_Salgado_Eriberto/build/teleop

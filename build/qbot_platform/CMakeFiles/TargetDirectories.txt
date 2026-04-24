@@ -1,0 +1,15 @@
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/list_install_components.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/install.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/install/strip.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/qbot_platform_driver_interface.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/rgbd.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/lidar.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/install/local.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/csi.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/command.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/fixed_lidar_frame.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/uninstall.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/qbot_platform_uninstall.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/test.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/rebuild_cache.dir
+/home/nvidia/ENGR857_Salgado_Eriberto/build/qbot_platform/CMakeFiles/edit_cache.dir

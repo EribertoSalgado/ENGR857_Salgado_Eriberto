@@ -37,7 +37,13 @@ def exit_qbot_platform_driver_interface_cb(context):
 
 def generate_launch_description():
     use_sim = LaunchConfiguration('use_sim')
-    driver_model_rt_executable = PathJoinSubstitution([FindPackageShare('qbot_platform'), 'rt_models', 'qbot_platform_driver_physical.rt-linux_qbot_platform'])
+    driver_model_rt_executable = PathJoinSubstitution(
+        [
+            FindPackageShare('teleop'),
+            'rt_models',
+            'qbot_platform_driver_physical.rt-linux_qbot_platform',
+        ]
+    )
     rt_model_start = ExecuteProcess(
             cmd=['quarc_run', '-r -t tcpip://localhost:17000', driver_model_rt_executable, '-d %d -uri tcpip://%m:17001'],
             name='QBotPlatformDriverModelStart',
@@ -46,7 +52,7 @@ def generate_launch_description():
 
     cartographer_config_dir = PathJoinSubstitution(
         [
-            FindPackageShare('qbot_platform'),
+            FindPackageShare('teleop'),
             'config',
         ]
     )
@@ -66,13 +72,13 @@ def generate_launch_description():
             name='Lidar')
 
     joystick_command_node = Node(
-        package = 'qbot_platform',
+        package='teleop',
         executable = 'command',
         name = 'joystickCommands'
     )
 
     qbot_platform_driver_node = Node(
-            package='qbot_platform',
+            package='teleop',
             executable='qbot_platform_driver_interface',
             name='QBotPlatformDriver',
             parameters=[{'arm_robot': True}],
@@ -102,6 +108,7 @@ def generate_launch_description():
             package='cartographer_ros',
             executable='cartographer_node',
             output='screen',
+            parameters=[{'use_sim_time': use_sim}],
             arguments=['-configuration_directory', cartographer_config_dir,
                        '-configuration_basename', configuration_basename])
 
@@ -109,6 +116,7 @@ def generate_launch_description():
             package='cartographer_ros',
             executable='cartographer_occupancy_grid_node',
             output='screen',
+            parameters=[{'use_sim_time': use_sim}],
             arguments=['-resolution', resolution, '-publish_period_sec', publish_period_sec])
 
     return LaunchDescription([
