@@ -20,7 +20,7 @@ def exit_driver_cb(context):
 def generate_launch_description():
 
     driver_model_rt_executable = PathJoinSubstitution(
-        [FindPackageShare('teleop'), 'rt_models',
+        [FindPackageShare('teleop2'), 'rt_models',
          'qbot_platform_driver_physical.rt-linux_qbot_platform']
     )
 
@@ -36,14 +36,14 @@ def generate_launch_description():
     )
 
     driver_node = Node(
-        package='teleop',
+        package='teleop2',
         executable='qbot_platform_driver_interface',
         name='QBotPlatformDriver',
         parameters=[{'arm_robot': True}],
     )
 
     joystick_node = Node(
-        package='teleop',
+        package='teleop2',
         executable='command',
         name='JoystickCommands'
     )

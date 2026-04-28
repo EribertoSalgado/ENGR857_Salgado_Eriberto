@@ -1,80 +1,165 @@
-// Simple forward drive: move the robot straight ahead ~3 feet, then stop.
-
-#include <chrono>
+// Half Speed, X to kill, LED Direction Control
 
 #include "rclcpp/rclcpp.hpp"
 #include <geometry_msgs/msg/twist.hpp>
 #include <std_msgs/msg/color_rgba.hpp>
 
+#include "quanser/quanser_messages.h"
+#include "quanser/quanser_memory.h"
+#include "std_msgs/msg/header.hpp"
+#include "quanser/quanser_hid.h"
+
 using namespace std::chrono_literals;
 
-class ForwardThreeFeet : public rclcpp::Node
+bool node_running = false;
+
+// joystick inputs
+t_double LLA = 0.0;
+t_double RT  = 0.0;
+t_double A  = 0;
+t_double X  = 0;
+t_double LB = 0.0;
+t_double RB = 0.0;
+t_double throttle;
+t_double steering;
+
+// joystick definition
+t_game_controller gamepad;
+t_error result;
+t_uint8 controller_number = 1;
+t_uint16 buffer_size   = 12;
+t_double deadzone[6]   = {0.0};
+t_double saturation[6] = {0.0};
+t_boolean auto_center  = false;
+t_uint16 max_force_feedback_effects = 0;
+t_double force_feedback_gain = 0.0;
+t_game_controller_states data;
+t_boolean is_new;
+
+
+class CommandPublisher : public rclcpp::Node
 {
 public:
-    ForwardThreeFeet()
-    : Node("forward_three_feet"),
-      speed_mps_(0.25),                 // forward speed in m/s
-      target_distance_m_(0.9144),       // 3 feet in meters
-      started_(false),
-      completed_(false)
+    CommandPublisher()
+    : Node("joystick_publisher")
     {
-        cmd_pub_ = create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        led_pub_ = create_publisher<std_msgs::msg::ColorRGBA>("/qbot_led_strip", 10);
+        // Velocity publisher
+        command_publisher_ =
+            this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
 
-        timer_ = create_wall_timer(50ms, std::bind(&ForwardThreeFeet::tick, this));
-    }
+        // ✅ LED publisher (correct topic + type)
+        led_publisher_ =
+            this->create_publisher<std_msgs::msg::ColorRGBA>("/qbot_led_strip", 10);
+
+        result = game_controller_open(controller_number, buffer_size,
+                     deadzone, saturation, auto_center,
+                     max_force_feedback_effects,
+                     force_feedback_gain, &gamepad);
+
+        auto timer_callback =
+        [this]() -> void {
+
+        if (result >= 0)
+        {
+            while (rclcpp::ok())
+            {
+                result = game_controller_poll(gamepad, &data, &is_new);
+
+                LLA = -1 * data.x;
+                RT  = data.rz;
+
+                A  = (t_uint8)(data.buttons & (1 << 0));
+                X  = (t_uint8)((data.buttons & (1 << 2)) / 4);
+                LB = (t_uint8)((data.buttons & (1 << 4)) / 16);
+                RB = (t_uint8)((data.buttons & (1 << 5)) / 32);
+
+                // ✅ Kill switch
+                if (X == 1)
+                {
+                    geometry_msgs::msg::Twist stop_msg;
+                    stop_msg.linear.x = 0;
+                    stop_msg.angular.z = 0;
+                    command_publisher_->publish(stop_msg);
+
+                    game_controller_close(gamepad);
+                    rclcpp::shutdown();
+                    return;
+                }
+
+                // Motion control
+                if (LB == 1)
+                {
+                    if (RT == 0)
+                        throttle = 0;
+                    else
+                        throttle = 0.3 * (0.5 + 0.5 * RT);
+
+                    steering = 0.5 * LLA;
+
+                    if (A == 1)
+                        throttle = -throttle;
+
+                    if (RB == 1)
+                        throttle = 0.5 * throttle;
+                }
+                else
+                {
+                    throttle = 0;
+                    steering = 0;
+                }
+
+                // Publish velocity
+                geometry_msgs::msg::Twist twist;
+                twist.linear.x = throttle;
+                twist.angular.z = steering;
+                command_publisher_->publish(twist);
+
+                // ✅ LED color logic
+                std_msgs::msg::ColorRGBA led_msg;
+
+                if (throttle > 0.01)   // Forward → Green
+                {
+                    led_msg.r = 0.0;
+                    led_msg.g = 1.0;
+                    led_msg.b = 0.0;
+                    led_msg.a = 1.0;
+                }
+                else if (throttle < -0.01)  // Backward → Blue
+                {
+                    led_msg.r = 0.0;
+                    led_msg.g = 0.0;
+                    led_msg.b = 1.0;
+                    led_msg.a = 1.0;
+                }
+                else   // Stationary → Yellow
+                {
+                    led_msg.r = 1.0;
+                    led_msg.g = 1.0;
+                    led_msg.b = 0.0;
+                    led_msg.a = 1.0;
+                }
+
+                led_publisher_->publish(led_msg);
+            }
+        }
+
+        game_controller_close(gamepad);
+        };
+
+        timer_ = this->create_wall_timer(100ms, timer_callback);
+    };
 
 private:
-    void tick()
-    {
-        const auto now = this->now();
-
-        if (!started_)
-        {
-            start_time_ = now;
-            started_ = true;
-            RCLCPP_INFO(get_logger(), "Driving forward 3 ft at %.2f m/s", speed_mps_);
-        }
-
-        double elapsed = (now - start_time_).seconds();
-        double traveled = elapsed * speed_mps_;
-
-        geometry_msgs::msg::Twist cmd{};
-        std_msgs::msg::ColorRGBA led{};
-
-        if (!completed_ && traveled < target_distance_m_)
-        {
-            cmd.linear.x = speed_mps_;
-            led.r = 0.0; led.g = 1.0; led.b = 0.0; led.a = 1.0;  // green while moving
-        }
-        else
-        {
-            completed_ = true;
-            cmd.linear.x = 0.0;
-            led.r = 1.0; led.g = 1.0; led.b = 0.0; led.a = 1.0;  // yellow when done
-        }
-
-        cmd_pub_->publish(cmd);
-        led_pub_->publish(led);
-    }
-
-    // Publishers
-    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr cmd_pub_;
-    rclcpp::Publisher<std_msgs::msg::ColorRGBA>::SharedPtr led_pub_;
     rclcpp::TimerBase::SharedPtr timer_;
-
-    // State
-    rclcpp::Time start_time_;
-    double speed_mps_;
-    double target_distance_m_;
-    bool started_;
-    bool completed_;
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr command_publisher_;
+    rclcpp::Publisher<std_msgs::msg::ColorRGBA>::SharedPtr led_publisher_;
 };
+
 
 int main(int argc, char ** argv)
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<ForwardThreeFeet>());
+    rclcpp::spin(std::make_shared<CommandPublisher>());
     rclcpp::shutdown();
     return 0;
 }
