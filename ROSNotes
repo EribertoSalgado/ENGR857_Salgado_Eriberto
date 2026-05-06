@@ -1,0 +1,100 @@
+Start Docker Container
+    docker run -it -v C:\Users\esal0\Desktop\ENGR857_Salgado_Eriberto\ros2_ws:/ros2_ws ros2_humble_image
+
+Source ROS 2 (Docker Does this automatically!)
+    source /opt/ros/humble/setup.bash
+
+Create a Package 
+    cd ~/ros2_ws/src
+    ros2 pkg create --build-type ament_cmake --license Apache-2.0 <package_name>
+
+Source the setup file
+    source install/local_setup.bash
+
+Build a package
+    cd ~/ros2_ws/src/
+    colcon build --packages-select teleop
+
+Use the package
+    ros2 run my_package my_node
+
+Git Commit Note: do not commit build, install
+    git remote add origin https://github.com/EribertoSalgado/ENGR857_Salgado_Eriberto.git
+    git add .
+    git status
+    git commit -m "<MyMessage>"
+    git restore --staged .
+    git clone https://github.com/EribertoSalgado/ENGR857_Salgado_Eriberto.git
+    git push origin main
+
+    git add .
+    git commit -m "<MyMessage>"
+    git push origin main
+
+    git branch backup-before-cleanup
+    git fetch origin
+    git reset --hard origin/main
+
+GitHub Token
+https://www.geeksforgeeks.org/git/how-to-generate-personal-access-token-in-github/
+![Token Commands](image.png)
+
+Header Location on robot
+    ls /usr/include/quanser
+
+Remove a dir
+    rm -rf <dir>
+
+Find a file
+    sudo find / -name battery_state.hpp 2>/dev/null
+    sudo find / -name joy.hpp 2>/dev/null
+
+Example: 
+    ros2 pkg create --build-type ament_cmake --license Apache-2.0 teleop
+    ros2 run teleop teleop_manual_drive_launch.py
+
+SSHed to Robot:
+    cd ~/ENGR857_Salgado_Eriberto/ros2_ws
+    rm -rf build install log
+    source /opt/ros/humble/setup.bash
+    #colcon build --packages-select teleop
+    colcon build --packages-select follower
+
+    source install/setup.bash
+    #ros2 launch teleop teleop_manual_drive_launch.py
+    ros2 launch follower teleop_manual_drive_launch.py
+
+    cd ~/ENGR857_Salgado_Eriberto/ros2_ws
+    colcon build --symlink-install --packages-select follower
+    source install/setup.bash
+    ros2 launch follower teleop_manual_drive_launch.py
+
+    colcon build --symlink-install --packages-select follower
+    source install/setup.bash
+    ros2 launch follower teleop_manual_drive_launch.py
+
+    cd ~/ENGR857_Salgado_Eriberto/ros2_ws
+    rm -rf build install log
+    source /opt/ros/humble/setup.bash
+    colcon build --symlink-install --packages-select delivery_bot
+    source install/setup.bash
+    ros2 launch delivery_bot teleop_manual_drive_launch.py
+
+    colcon build --symlink-install --packages-select teleop2
+    source install/setup.bash
+    ros2 launch teleop2 teleop_manual_drive_launch.py
+
+    *Mapping*
+    cd ~/ENGR857_Salgado_Eriberto/ros2_ws
+    rm -rf build install log
+    source /opt/ros/humble/setup.bash
+    colcon build --symlink-install --packages-select qbot_platform
+    source install/setup.bash
+    ros2 launch qbot_platform qbot_platform_manual_map_launch.py
+
+    ros2 topic list | grep map
+    ros2 node list | grep cartographer
+
+    In a new terminal
+    source /opt/ros/humble/setup.bash && source ~/ENGR857_Salgado_Eriberto/ros2_ws/install/setup.bash
+    ros2 run nav2_map_server map_saver_cli -f ~/qbot_map
