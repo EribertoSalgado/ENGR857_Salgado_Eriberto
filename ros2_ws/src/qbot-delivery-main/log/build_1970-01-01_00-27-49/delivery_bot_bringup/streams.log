@@ -1,0 +1,29 @@
+[6.466s] Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/build --no-deps symlink_data
+[7.476s] running develop
+[7.477s] /usr/local/lib/python3.8/dist-packages/setuptools/command/easy_install.py:144: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+[7.477s]   warnings.warn(
+[8.088s] running egg_info
+[8.088s] creating delivery_bot_bringup.egg-info
+[8.122s] writing delivery_bot_bringup.egg-info/PKG-INFO
+[8.123s] writing dependency_links to delivery_bot_bringup.egg-info/dependency_links.txt
+[8.123s] writing requirements to delivery_bot_bringup.egg-info/requires.txt
+[8.123s] writing top-level names to delivery_bot_bringup.egg-info/top_level.txt
+[8.128s] writing manifest file 'delivery_bot_bringup.egg-info/SOURCES.txt'
+[8.201s] reading manifest file 'delivery_bot_bringup.egg-info/SOURCES.txt'
+[8.202s] writing manifest file 'delivery_bot_bringup.egg-info/SOURCES.txt'
+[8.333s] running build_ext
+[8.333s] Creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages/delivery-bot-bringup.egg-link (link to .)
+[8.336s] 
+[8.336s] Installed /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup
+[8.337s] running symlink_data
+[8.337s] creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/ament_index
+[8.337s] creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/ament_index/resource_index
+[8.337s] creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/ament_index/resource_index/packages
+[8.338s] symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/resource/delivery_bot_bringup -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/ament_index/resource_index/packages
+[8.338s] symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/package.xml -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup
+[8.338s] creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/launch
+[8.338s] symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/launch/teleop.launch.py -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/launch
+[8.338s] symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/launch/bringup.launch.py -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/launch
+[8.338s] creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/config
+[8.338s] symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/config/qbot_params.yaml -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/config
+[8.539s] Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/build --no-deps symlink_data

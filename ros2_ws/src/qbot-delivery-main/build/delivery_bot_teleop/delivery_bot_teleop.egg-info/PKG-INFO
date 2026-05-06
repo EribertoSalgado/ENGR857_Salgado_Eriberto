@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: delivery-bot-teleop
+Version: 0.0.0
+Summary: WASD keyboard teleop for the QBot Delivery Bot.
+Maintainer: Kovidh
+Maintainer-email: kovidh@example.com
+License: Apache-2.0

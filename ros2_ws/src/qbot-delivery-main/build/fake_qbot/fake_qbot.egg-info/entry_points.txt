@@ -1,0 +1,2 @@
+[console_scripts]
+fake_qbot = fake_qbot.fake_qbot_node:main

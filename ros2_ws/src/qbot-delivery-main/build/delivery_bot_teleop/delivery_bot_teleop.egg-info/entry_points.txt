@@ -1,0 +1,2 @@
+[console_scripts]
+wasd_teleop = delivery_bot_teleop.wasd_teleop_node:main

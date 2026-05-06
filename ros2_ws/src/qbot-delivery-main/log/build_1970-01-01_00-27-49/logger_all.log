@@ -1,0 +1,387 @@
+[0.516s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.516s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff8e49f190>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=6, paths=None, symlink_install=True, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff8e49f190>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffff8d9d2730>)
+[1.055s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.055s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.055s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.055s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.055s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.056s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.056s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.056s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.057s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.086s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.087s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['ignore', 'ignore_ament_install']
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'ignore'
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'ignore_ament_install'
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['colcon_pkg']
+[1.088s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'colcon_pkg'
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['colcon_meta']
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'colcon_meta'
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['ros']
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'ros'
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['cmake', 'python']
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'cmake'
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'python'
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extensions ['python_setup_py']
+[1.089s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main) by extension 'python_setup_py'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['ignore', 'ignore_ament_install']
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'ignore'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'ignore_ament_install'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['colcon_pkg']
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'colcon_pkg'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['colcon_meta']
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'colcon_meta'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['ros']
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'ros'
+[1.090s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['cmake', 'python']
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'cmake'
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'python'
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extensions ['python_setup_py']
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src) by extension 'python_setup_py'
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/build) by extensions ['ignore', 'ignore_ament_install']
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/build) by extension 'ignore'
+[1.091s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/build) ignored
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extensions ['ignore', 'ignore_ament_install']
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extension 'ignore'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extension 'ignore_ament_install'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extensions ['colcon_pkg']
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extension 'colcon_pkg'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extensions ['colcon_meta']
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extension 'colcon_meta'
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extensions ['ros']
+[1.092s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot) by extension 'ros'
+[1.098s] DEBUG:colcon.colcon_core.package_identification:Package 'qbot-delivery-main/src/delivery_bot' with type 'ros.ament_python' and name 'delivery_bot'
+[1.098s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extensions ['ignore', 'ignore_ament_install']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extension 'ignore'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extension 'ignore_ament_install'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extensions ['colcon_pkg']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extension 'colcon_pkg'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extensions ['colcon_meta']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extension 'colcon_meta'
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extensions ['ros']
+[1.099s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_bringup) by extension 'ros'
+[1.100s] DEBUG:colcon.colcon_core.package_identification:Package 'qbot-delivery-main/src/delivery_bot_bringup' with type 'ros.ament_python' and name 'delivery_bot_bringup'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extensions ['ignore', 'ignore_ament_install']
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extension 'ignore'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extension 'ignore_ament_install'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extensions ['colcon_pkg']
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extension 'colcon_pkg'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extensions ['colcon_meta']
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extension 'colcon_meta'
+[1.101s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extensions ['ros']
+[1.102s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_intent) by extension 'ros'
+[1.103s] DEBUG:colcon.colcon_core.package_identification:Package 'qbot-delivery-main/src/delivery_bot_intent' with type 'ros.ament_python' and name 'delivery_bot_intent'
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extensions ['ignore', 'ignore_ament_install']
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extension 'ignore'
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extension 'ignore_ament_install'
+[1.103s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extensions ['colcon_pkg']
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extension 'colcon_pkg'
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extensions ['colcon_meta']
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extension 'colcon_meta'
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extensions ['ros']
+[1.104s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/delivery_bot_teleop) by extension 'ros'
+[1.105s] DEBUG:colcon.colcon_core.package_identification:Package 'qbot-delivery-main/src/delivery_bot_teleop' with type 'ros.ament_python' and name 'delivery_bot_teleop'
+[1.105s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extensions ['ignore', 'ignore_ament_install']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extension 'ignore'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extension 'ignore_ament_install'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extensions ['colcon_pkg']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extension 'colcon_pkg'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extensions ['colcon_meta']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extension 'colcon_meta'
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extensions ['ros']
+[1.106s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/fake_qbot) by extension 'ros'
+[1.108s] DEBUG:colcon.colcon_core.package_identification:Package 'qbot-delivery-main/src/fake_qbot' with type 'ros.ament_python' and name 'fake_qbot'
+[1.108s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/install) by extensions ['ignore', 'ignore_ament_install']
+[1.108s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/install) by extension 'ignore'
+[1.108s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/install) ignored
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/log) by extensions ['ignore', 'ignore_ament_install']
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/log) by extension 'ignore'
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/src/log) ignored
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['ignore', 'ignore_ament_install']
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'ignore'
+[1.109s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'ignore_ament_install'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['colcon_pkg']
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'colcon_pkg'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['colcon_meta']
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'colcon_meta'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['ros']
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'ros'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['cmake', 'python']
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'cmake'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'python'
+[1.110s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extensions ['python_setup_py']
+[1.111s] Level 1:colcon.colcon_core.package_identification:_identify(qbot-delivery-main/web) by extension 'python_setup_py'
+[1.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.111s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[1.152s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[1.156s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/nvidia/ENGR857_Huang_Kevin/ros2_ws/install
+[1.157s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/nvidia/ENGR857_Huang_Kevin/ros2_ws/src/install
+[1.159s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/nvidia/ENGR857_Huang_Kevin/ros2_ws/src/teleop/install
+[1.160s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 3 installed packages in /home/nvidia/ros2/install
+[1.163s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 355 installed packages in /opt/ros/humble
+[1.166s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_args' from command line to 'None'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_target' from command line to 'None'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_clean_cache' from command line to 'False'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_clean_first' from command line to 'False'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'cmake_force_configure' from command line to 'False'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'ament_cmake_args' from command line to 'None'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'catkin_cmake_args' from command line to 'None'
+[1.299s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.299s] DEBUG:colcon.colcon_core.verb:Building package 'delivery_bot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot', 'merge_install': False, 'path': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot', 'symlink_install': True, 'test_result_base': None}
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_args' from command line to 'None'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_target' from command line to 'None'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_clean_cache' from command line to 'False'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_clean_first' from command line to 'False'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'cmake_force_configure' from command line to 'False'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'ament_cmake_args' from command line to 'None'
+[1.300s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'catkin_cmake_args' from command line to 'None'
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_bringup' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.301s] DEBUG:colcon.colcon_core.verb:Building package 'delivery_bot_bringup' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup', 'merge_install': False, 'path': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_bringup', 'symlink_install': True, 'test_result_base': None}
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_args' from command line to 'None'
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_target' from command line to 'None'
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_clean_cache' from command line to 'False'
+[1.301s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_clean_first' from command line to 'False'
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'cmake_force_configure' from command line to 'False'
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'ament_cmake_args' from command line to 'None'
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'catkin_cmake_args' from command line to 'None'
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_intent' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.302s] DEBUG:colcon.colcon_core.verb:Building package 'delivery_bot_intent' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent', 'merge_install': False, 'path': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_intent', 'symlink_install': True, 'test_result_base': None}
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_args' from command line to 'None'
+[1.302s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_target' from command line to 'None'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_clean_cache' from command line to 'False'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_clean_first' from command line to 'False'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'cmake_force_configure' from command line to 'False'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'ament_cmake_args' from command line to 'None'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'catkin_cmake_args' from command line to 'None'
+[1.303s] Level 5:colcon.colcon_core.verb:set package 'delivery_bot_teleop' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.303s] DEBUG:colcon.colcon_core.verb:Building package 'delivery_bot_teleop' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop', 'merge_install': False, 'path': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_teleop', 'symlink_install': True, 'test_result_base': None}
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_args' from command line to 'None'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_target' from command line to 'None'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_clean_cache' from command line to 'False'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_clean_first' from command line to 'False'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'cmake_force_configure' from command line to 'False'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'ament_cmake_args' from command line to 'None'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'catkin_cmake_args' from command line to 'None'
+[1.304s] Level 5:colcon.colcon_core.verb:set package 'fake_qbot' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.304s] DEBUG:colcon.colcon_core.verb:Building package 'fake_qbot' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot', 'merge_install': False, 'path': '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/fake_qbot', 'symlink_install': True, 'test_result_base': None}
+[1.304s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.307s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.307s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot' with build type 'ament_python'
+[1.308s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot', 'ament_prefix_path')
+[1.312s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.312s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/ament_prefix_path.ps1'
+[1.314s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/ament_prefix_path.dsv'
+[1.315s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/ament_prefix_path.sh'
+[1.316s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.316s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.330s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_bringup' with build type 'ament_python'
+[1.331s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_bringup', 'ament_prefix_path')
+[1.332s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/ament_prefix_path.ps1'
+[1.333s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/ament_prefix_path.dsv'
+[1.334s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/ament_prefix_path.sh'
+[1.335s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.335s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.348s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_intent' with build type 'ament_python'
+[1.349s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_intent', 'ament_prefix_path')
+[1.350s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/ament_prefix_path.ps1'
+[1.352s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/ament_prefix_path.dsv'
+[1.352s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/ament_prefix_path.sh'
+[1.353s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.353s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.366s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_teleop' with build type 'ament_python'
+[1.366s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_teleop', 'ament_prefix_path')
+[1.367s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/ament_prefix_path.ps1'
+[1.369s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/ament_prefix_path.dsv'
+[1.369s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/ament_prefix_path.sh'
+[1.370s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.371s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.384s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/fake_qbot' with build type 'ament_python'
+[1.384s] Level 1:colcon.colcon_core.shell:create_environment_hook('fake_qbot', 'ament_prefix_path')
+[1.385s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/ament_prefix_path.ps1'
+[1.386s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/ament_prefix_path.dsv'
+[1.387s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/ament_prefix_path.sh'
+[1.388s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.388s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.314s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot'
+[2.315s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.315s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.230s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_bringup'
+[3.232s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.232s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.140s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_intent'
+[4.142s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.142s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.045s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/delivery_bot_teleop'
+[5.047s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.047s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.949s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/qbot-delivery-main/src/fake_qbot'
+[5.950s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.951s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[7.763s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/build --no-deps symlink_data
+[7.780s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/build --no-deps symlink_data
+[7.797s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/build --no-deps symlink_data
+[7.810s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/build --no-deps symlink_data
+[7.857s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/build --no-deps symlink_data
+[9.830s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_intent', 'pythonpath_develop')
+[9.831s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath_develop.ps1'
+[9.833s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/build --no-deps symlink_data
+[9.835s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath_develop.dsv'
+[9.836s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath_develop.sh'
+[9.844s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent' for CMake module files
+[9.845s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent' for CMake config files
+[9.847s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/lib'
+[9.848s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/bin'
+[9.848s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/lib/pkgconfig/delivery_bot_intent.pc'
+[9.848s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/lib/python3.8/site-packages'
+[9.848s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_intent', 'pythonpath')
+[9.849s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath.ps1'
+[9.850s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath.dsv'
+[9.851s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/hook/pythonpath.sh'
+[9.852s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/bin'
+[9.852s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(delivery_bot_intent)
+[9.853s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/package.ps1'
+[9.856s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/package.dsv'
+[9.857s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/package.sh'
+[9.859s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/package.bash'
+[9.863s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/delivery_bot_intent/package.zsh'
+[9.865s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_intent/share/colcon-core/packages/delivery_bot_intent)
+[9.868s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_bringup', 'pythonpath_develop')
+[9.869s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath_develop.ps1'
+[9.870s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/build --no-deps symlink_data
+[9.870s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath_develop.dsv'
+[9.871s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath_develop.sh'
+[9.872s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup' for CMake module files
+[9.873s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup' for CMake config files
+[9.874s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib'
+[9.874s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/bin'
+[9.874s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/pkgconfig/delivery_bot_bringup.pc'
+[9.875s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/lib/python3.8/site-packages'
+[9.875s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_bringup', 'pythonpath')
+[9.876s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath.ps1'
+[9.876s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath.dsv'
+[9.877s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/hook/pythonpath.sh'
+[9.878s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/bin'
+[9.878s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(delivery_bot_bringup)
+[9.879s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/package.ps1'
+[9.880s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/package.dsv'
+[9.880s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/package.sh'
+[9.881s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/package.bash'
+[9.882s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/delivery_bot_bringup/package.zsh'
+[9.883s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_bringup/share/colcon-core/packages/delivery_bot_bringup)
+[9.885s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_teleop', 'pythonpath_develop')
+[9.886s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath_develop.ps1'
+[9.887s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/build --no-deps symlink_data
+[9.887s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath_develop.dsv'
+[9.888s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath_develop.sh'
+[9.889s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop' for CMake module files
+[9.890s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop' for CMake config files
+[9.891s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/lib'
+[9.891s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/bin'
+[9.891s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/lib/pkgconfig/delivery_bot_teleop.pc'
+[9.892s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/lib/python3.8/site-packages'
+[9.892s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot_teleop', 'pythonpath')
+[9.892s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath.ps1'
+[9.893s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath.dsv'
+[9.893s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/hook/pythonpath.sh'
+[9.894s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/bin'
+[9.895s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(delivery_bot_teleop)
+[9.895s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/package.ps1'
+[9.896s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/package.dsv'
+[9.897s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/package.sh'
+[9.898s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/package.bash'
+[9.899s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/delivery_bot_teleop/package.zsh'
+[9.899s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot_teleop/share/colcon-core/packages/delivery_bot_teleop)
+[9.914s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot', 'pythonpath_develop')
+[9.914s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/share/delivery_bot/hook/pythonpath_develop.ps1'
+[9.915s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/build --no-deps symlink_data
+[9.916s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/share/delivery_bot/hook/pythonpath_develop.dsv'
+[9.917s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/share/delivery_bot/hook/pythonpath_develop.sh'
+[9.918s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot' for CMake module files
+[9.919s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot' for CMake config files
+[9.920s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib'
+[9.920s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/bin'
+[9.920s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/pkgconfig/delivery_bot.pc'
+[9.920s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/python3.8/site-packages'
+[9.920s] Level 1:colcon.colcon_core.shell:create_environment_hook('delivery_bot', 'pythonpath')
+[9.921s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/pythonpath.ps1'
+[9.922s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/pythonpath.dsv'
+[9.922s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/hook/pythonpath.sh'
+[9.923s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/bin'
+[9.923s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(delivery_bot)
+[9.924s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/package.ps1'
+[9.925s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/package.dsv'
+[9.926s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/package.sh'
+[9.926s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/package.bash'
+[9.927s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot/package.zsh'
+[9.928s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/colcon-core/packages/delivery_bot)
+[9.975s] Level 1:colcon.colcon_core.shell:create_environment_hook('fake_qbot', 'pythonpath_develop')
+[9.976s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.ps1'
+[9.977s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot' returned '0': PYTHONPATH=/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py develop --editable --build-directory /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/build --no-deps symlink_data
+[9.978s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.dsv'
+[9.979s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.sh'
+[9.980s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot' for CMake module files
+[9.981s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot' for CMake config files
+[9.982s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib'
+[9.982s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/bin'
+[9.983s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/pkgconfig/fake_qbot.pc'
+[9.983s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/python3.8/site-packages'
+[9.983s] Level 1:colcon.colcon_core.shell:create_environment_hook('fake_qbot', 'pythonpath')
+[9.984s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/pythonpath.ps1'
+[9.984s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/pythonpath.dsv'
+[9.985s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/hook/pythonpath.sh'
+[9.986s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/bin'
+[9.986s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fake_qbot)
+[9.987s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/package.ps1'
+[9.988s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/package.dsv'
+[9.989s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/package.sh'
+[9.990s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/package.bash'
+[9.991s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot/package.zsh'
+[9.992s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/colcon-core/packages/fake_qbot)
+[9.992s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[9.993s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[9.994s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[9.994s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[10.007s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[10.007s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[10.007s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[10.044s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[10.046s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/local_setup.ps1'
+[10.048s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/_local_setup_util_ps1.py'
+[10.051s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/setup.ps1'
+[10.054s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/local_setup.sh'
+[10.055s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/_local_setup_util_sh.py'
+[10.056s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/setup.sh'
+[10.058s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/local_setup.bash'
+[10.059s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/setup.bash'
+[10.062s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/local_setup.zsh'
+[10.063s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/setup.zsh'

@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+delivery_bot_intent/__init__.py
+delivery_bot_intent/intent_communication_node.py
+delivery_bot_intent.egg-info/PKG-INFO
+delivery_bot_intent.egg-info/SOURCES.txt
+delivery_bot_intent.egg-info/dependency_links.txt
+delivery_bot_intent.egg-info/entry_points.txt
+delivery_bot_intent.egg-info/requires.txt
+delivery_bot_intent.egg-info/top_level.txt
+delivery_bot_intent.egg-info/zip-safe
+resource/delivery_bot_intent

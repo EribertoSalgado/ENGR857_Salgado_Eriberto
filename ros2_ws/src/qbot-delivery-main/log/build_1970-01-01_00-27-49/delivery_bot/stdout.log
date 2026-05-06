@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating delivery_bot.egg-info
+writing delivery_bot.egg-info/PKG-INFO
+writing dependency_links to delivery_bot.egg-info/dependency_links.txt
+writing entry points to delivery_bot.egg-info/entry_points.txt
+writing requirements to delivery_bot.egg-info/requires.txt
+writing top-level names to delivery_bot.egg-info/top_level.txt
+writing manifest file 'delivery_bot.egg-info/SOURCES.txt'
+reading manifest file 'delivery_bot.egg-info/SOURCES.txt'
+writing manifest file 'delivery_bot.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/python3.8/site-packages/delivery-bot.egg-link (link to .)
+Installing state_machine script to /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/lib/delivery_bot
+
+Installed /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot
+running symlink_data
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/ament_index
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/ament_index/resource_index
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/ament_index/resource_index/packages
+symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/resource/delivery_bot -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/ament_index/resource_index/packages
+symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/delivery_bot/package.xml -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/delivery_bot/share/delivery_bot

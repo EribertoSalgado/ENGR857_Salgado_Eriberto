@@ -1,0 +1,20 @@
+delivery_bot_state_machine:
+  ros__parameters:
+    cmd_vel_topic: /cmd_vel
+    odom_topic: /odom
+    scan_topic: /scan
+    state_topic: /robot_state
+    destination_topic: /destination
+    linear_speed: 0.2
+    angular_speed: 0.5
+    goal_tolerance: 0.2
+    obstacle_distance: 0.6
+    signal_duration: 2.0
+    handoff_duration: 3.0
+    deliver_duration: 2.0
+
+intent_communication:
+  ros__parameters:
+    state_topic: /robot_state
+    color_topic: /intent/color
+    display_topic: /intent/display

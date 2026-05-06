@@ -1,0 +1,2 @@
+[console_scripts]
+intent_communication = delivery_bot_intent.intent_communication_node:main

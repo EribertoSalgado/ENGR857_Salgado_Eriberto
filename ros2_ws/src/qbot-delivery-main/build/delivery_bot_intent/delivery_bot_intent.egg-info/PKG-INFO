@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: delivery-bot-intent
+Version: 0.0.0
+Summary: Intent communication node - translates state to color and display
+Maintainer: Kovidh
+Maintainer-email: kovidh@example.com
+License: Apache-2.0

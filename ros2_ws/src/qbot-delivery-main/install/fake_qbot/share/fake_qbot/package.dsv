@@ -1,0 +1,9 @@
+source;share/fake_qbot/hook/pythonpath.ps1
+source;share/fake_qbot/hook/pythonpath.dsv
+source;share/fake_qbot/hook/pythonpath.sh
+source;share/fake_qbot/hook/ament_prefix_path.ps1
+source;share/fake_qbot/hook/ament_prefix_path.dsv
+source;share/fake_qbot/hook/ament_prefix_path.sh
+source;../../build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.ps1
+source;../../build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.dsv
+source;../../build/fake_qbot/share/fake_qbot/hook/pythonpath_develop.sh

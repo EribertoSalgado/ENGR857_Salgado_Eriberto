@@ -55,10 +55,8 @@ public:
                      deadzone, saturation, auto_center,
                      max_force_feedback_effects,
                      force_feedback_gain, &gamepad);
-
         auto timer_callback =
         [this]() -> void {
-
         if (result >= 0)
         {
             while (rclcpp::ok())
@@ -85,6 +83,12 @@ public:
                     rclcpp::shutdown();
                     return;
                 }
+		//Testing for Motion
+		i = 0;  
+		do{
+		throttle = 1; 
+		i++; 
+		}while(i != 10 
 
                 // Motion control
                 if (LB == 1)

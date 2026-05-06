@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating fake_qbot.egg-info
+writing fake_qbot.egg-info/PKG-INFO
+writing dependency_links to fake_qbot.egg-info/dependency_links.txt
+writing entry points to fake_qbot.egg-info/entry_points.txt
+writing requirements to fake_qbot.egg-info/requires.txt
+writing top-level names to fake_qbot.egg-info/top_level.txt
+writing manifest file 'fake_qbot.egg-info/SOURCES.txt'
+reading manifest file 'fake_qbot.egg-info/SOURCES.txt'
+writing manifest file 'fake_qbot.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/python3.8/site-packages/fake-qbot.egg-link (link to .)
+Installing fake_qbot script to /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/lib/fake_qbot
+
+Installed /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot
+running symlink_data
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/ament_index
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/ament_index/resource_index
+creating /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/ament_index/resource_index/packages
+symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/resource/fake_qbot -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/ament_index/resource_index/packages
+symbolically linking /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/build/fake_qbot/package.xml -> /home/nvidia/ENGR857_Salgado_Eriberto-main/ros2_ws/src/qbot-delivery-main/install/fake_qbot/share/fake_qbot

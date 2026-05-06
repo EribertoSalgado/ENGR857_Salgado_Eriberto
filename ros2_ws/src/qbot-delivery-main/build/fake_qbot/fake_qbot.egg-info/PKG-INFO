@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: fake-qbot
+Version: 0.0.0
+Summary: Offline simulator for the QBot delivery robot
+Maintainer: Kovidh
+Maintainer-email: kovidh@example.com
+License: Apache-2.0

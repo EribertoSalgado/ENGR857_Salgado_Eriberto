@@ -1,0 +1,2 @@
+[console_scripts]
+state_machine = delivery_bot.state_machine_node:main
