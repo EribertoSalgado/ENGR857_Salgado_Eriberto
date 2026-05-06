@@ -193,7 +193,7 @@ private:
         if (now - state_start_time_ < move_duration_)
         {
             publish_velocity(-kForwardSpeedMetersPerSecond, 0.0);
-            publish_blinking_purple(now);
+            publish_blinking_green(now);
             return;
         }
 
@@ -326,12 +326,6 @@ private:
     void publish_blinking_green(const std::chrono::steady_clock::time_point & now)
     {
         publish_led(0.0, blink_is_on(now) ? 1.0 : 0.0, 0.0);
-    }
-
-    void publish_blinking_purple(const std::chrono::steady_clock::time_point & now)
-    {
-        const double purple_value = blink_is_on(now) ? 0.5 : 0.0;
-        publish_led(purple_value, 0.0, purple_value);
     }
 
     rclcpp::TimerBase::SharedPtr timer_;
