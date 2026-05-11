@@ -8,6 +8,7 @@ endif()
 # Dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
@@ -51,6 +52,7 @@ target_link_libraries(command
 
 ament_target_dependencies(command
   rclcpp
+  ament_index_cpp
   geometry_msgs
   std_msgs
 )
@@ -74,6 +76,12 @@ install(DIRECTORY rt_models
 
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}
+)
+
+install(FILES
+  AwaitingPickup.mp3
+  GoHome.mp3
+  DESTINATION share/${PROJECT_NAME}/audio
 )
 
 ament_package()

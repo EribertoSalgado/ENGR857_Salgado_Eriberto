@@ -3,10 +3,13 @@
 
 #include <chrono>
 #include <cstdlib>
+#include <exception>
 #include <functional>
 #include <memory>
 #include <string>
+#include <thread>
 
+#include "ament_index_cpp/get_package_share_directory.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "std_msgs/msg/color_rgba.hpp"
@@ -30,11 +33,38 @@ public:
 
         this->declare_parameter("audio_enabled", true);
         this->declare_parameter<std::string>(
-            "audio_command",
-            "timeout 2s speaker-test -D default -t sine -f 880 -l 1 -s 1 >/dev/null 2>&1");
+            "audio_player_command",
+            "(command -v gst-launch-1.0 >/dev/null 2>&1 && gst-launch-1.0 -q playbin uri={uri}) || "
+            "(command -v gst-play-1.0 >/dev/null 2>&1 && gst-play-1.0 --quiet {uri}) || "
+            "(command -v mpg123 >/dev/null 2>&1 && mpg123 -q {file}) || "
+            "(command -v mpg321 >/dev/null 2>&1 && mpg321 -q {file}) || "
+            "(command -v mpv >/dev/null 2>&1 && mpv --no-video --really-quiet {file}) || "
+            "(command -v play >/dev/null 2>&1 && play -q {file}) || "
+            "(command -v ffplay >/dev/null 2>&1 && ffplay -nodisp -autoexit -loglevel quiet {file}) || "
+            "(command -v cvlc >/dev/null 2>&1 && cvlc --play-and-exit --quiet {file})");
+        this->declare_parameter<std::string>(
+            "awaiting_pickup_audio_file",
+            "audio/AwaitingPickup.mp3");
+        this->declare_parameter<std::string>(
+            "go_home_audio_file",
+            "audio/GoHome.mp3");
+        this->declare_parameter("awaiting_pickup_repeat_seconds", 30.0);
 
         move_duration_ = std::chrono::duration<double>(
             kDistanceMeters / kForwardSpeedMetersPerSecond);
+
+        try
+        {
+            package_share_directory_ =
+                ament_index_cpp::get_package_share_directory("teleop");
+        }
+        catch (const std::exception & e)
+        {
+            RCLCPP_WARN(
+                this->get_logger(),
+                "Could not locate teleop package share directory for audio files: %s",
+                e.what());
+        }
 
         open_controller();
 
@@ -168,7 +198,7 @@ private:
         publish_velocity(0.0, 0.0);
         publish_green();
         transition_to(MotionState::DeliveryStop, now);
-        play_solid_green_wait_audio();
+        play_awaiting_pickup_audio(now);
         RCLCPP_INFO(this->get_logger(), "Delivery stop reached. Press Y to return home.");
     }
 
@@ -181,6 +211,7 @@ private:
 
         if (!buttons.y)
         {
+            maybe_repeat_awaiting_pickup_audio(now);
             return;
         }
 
@@ -193,6 +224,7 @@ private:
         }
 
         transition_to(MotionState::ReturningHome, now);
+        play_go_home_audio();
         RCLCPP_INFO(this->get_logger(), "Y pressed. Returning home from the 1-foot delivery point.");
     }
 
@@ -336,29 +368,194 @@ private:
         publish_led(0.0, blink_is_on(now) ? 1.0 : 0.0, 0.0);
     }
 
-    void play_solid_green_wait_audio()
+    void play_awaiting_pickup_audio(const std::chrono::steady_clock::time_point & now)
+    {
+        last_awaiting_pickup_audio_time_ = now;
+        awaiting_pickup_audio_has_played_ = true;
+        play_audio_file(
+            this->get_parameter("awaiting_pickup_audio_file").as_string(),
+            "awaiting pickup");
+    }
+
+    void maybe_repeat_awaiting_pickup_audio(
+        const std::chrono::steady_clock::time_point & now)
+    {
+        const double repeat_seconds =
+            this->get_parameter("awaiting_pickup_repeat_seconds").as_double();
+        if (repeat_seconds <= 0.0)
+        {
+            return;
+        }
+
+        if (!awaiting_pickup_audio_has_played_)
+        {
+            play_awaiting_pickup_audio(now);
+            return;
+        }
+
+        const auto repeat_interval =
+            std::chrono::duration<double>(repeat_seconds);
+        if (now - last_awaiting_pickup_audio_time_ >= repeat_interval)
+        {
+            play_awaiting_pickup_audio(now);
+        }
+    }
+
+    void play_go_home_audio()
+    {
+        play_audio_file(
+            this->get_parameter("go_home_audio_file").as_string(),
+            "go home");
+    }
+
+    void play_audio_file(const std::string & audio_file, const char * cue_name)
     {
         if (!this->get_parameter("audio_enabled").as_bool())
         {
             return;
         }
 
-        const std::string audio_command =
-            this->get_parameter("audio_command").as_string();
-        if (audio_command.empty())
+        const std::string audio_path = resolve_audio_path(audio_file);
+        if (audio_path.empty())
         {
             return;
         }
 
-        const int result = std::system((audio_command + " &").c_str());
-        if (result != 0)
+        std::string audio_command =
+            this->get_parameter("audio_player_command").as_string();
+        if (audio_command.empty())
         {
             RCLCPP_WARN(
                 this->get_logger(),
-                "Audio command returned %d: %s",
-                result,
-                audio_command.c_str());
+                "Audio cue '%s' skipped because audio_player_command is empty.",
+                cue_name);
+            return;
         }
+
+        const std::string quoted_audio_path = shell_quote(audio_path);
+        const std::string quoted_audio_uri = shell_quote(make_file_uri(audio_path));
+        const bool inserted_file_placeholder =
+            replace_all(audio_command, "{file}", quoted_audio_path);
+        const bool inserted_uri_placeholder =
+            replace_all(audio_command, "{uri}", quoted_audio_uri);
+
+        if (!inserted_file_placeholder && !inserted_uri_placeholder)
+        {
+            audio_command += " " + quoted_audio_path;
+        }
+
+        const auto logger = this->get_logger();
+        const std::string cue_label(cue_name);
+        std::thread(
+            [audio_command, logger, cue_label]()
+            {
+                const int result = std::system(audio_command.c_str());
+                if (result != 0)
+                {
+                    RCLCPP_WARN(
+                        logger,
+                        "Audio cue '%s' command returned %d: %s",
+                        cue_label.c_str(),
+                        result,
+                        audio_command.c_str());
+                }
+            }).detach();
+    }
+
+    std::string resolve_audio_path(const std::string & audio_file) const
+    {
+        if (audio_file.empty() || path_is_absolute(audio_file))
+        {
+            return audio_file;
+        }
+
+        if (package_share_directory_.empty())
+        {
+            RCLCPP_WARN(
+                this->get_logger(),
+                "Audio file '%s' is relative, but the package share directory is unavailable.",
+                audio_file.c_str());
+            return "";
+        }
+
+        return package_share_directory_ + "/" + audio_file;
+    }
+
+    static bool replace_all(
+        std::string & text,
+        const std::string & placeholder,
+        const std::string & replacement)
+    {
+        bool replaced = false;
+        std::string::size_type placeholder_position = text.find(placeholder);
+        while (placeholder_position != std::string::npos)
+        {
+            text.replace(
+                placeholder_position,
+                placeholder.length(),
+                replacement);
+            replaced = true;
+            placeholder_position =
+                text.find(placeholder, placeholder_position + replacement.length());
+        }
+        return replaced;
+    }
+
+    static std::string make_file_uri(const std::string & path)
+    {
+        std::string uri = "file://";
+        for (const char character : path)
+        {
+            if (character == ' ')
+            {
+                uri += "%20";
+            }
+            else if (character == '\'')
+            {
+                uri += "%27";
+            }
+            else
+            {
+                uri += character;
+            }
+        }
+        return uri;
+    }
+
+    static bool path_is_absolute(const std::string & path)
+    {
+        if (path.empty())
+        {
+            return false;
+        }
+
+        if (path.front() == '/' || path.front() == '\\')
+        {
+            return true;
+        }
+
+        return path.size() >= 3 &&
+            ((path[0] >= 'A' && path[0] <= 'Z') || (path[0] >= 'a' && path[0] <= 'z')) &&
+            path[1] == ':' &&
+            (path[2] == '\\' || path[2] == '/');
+    }
+
+    static std::string shell_quote(const std::string & value)
+    {
+        std::string quoted = "'";
+        for (const char character : value)
+        {
+            if (character == '\'')
+            {
+                quoted += "'\\''";
+            }
+            else
+            {
+                quoted += character;
+            }
+        }
+        quoted += "'";
+        return quoted;
     }
 
     rclcpp::TimerBase::SharedPtr timer_;
@@ -370,11 +567,14 @@ private:
 
     std::chrono::steady_clock::time_point state_start_time_;
     std::chrono::steady_clock::time_point last_controller_open_attempt_;
+    std::chrono::steady_clock::time_point last_awaiting_pickup_audio_time_;
     std::chrono::duration<double> move_duration_{0.0};
+    std::string package_share_directory_;
     MotionState state_ = MotionState::WaitingForInput;
     bool controller_open_ = false;
     bool a_was_down_ = false;
     bool y_was_down_ = false;
+    bool awaiting_pickup_audio_has_played_ = false;
 };
 
 int main(int argc, char ** argv)

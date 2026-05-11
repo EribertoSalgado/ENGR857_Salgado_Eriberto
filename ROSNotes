@@ -85,16 +85,31 @@ SSHed to Robot:
     ros2 launch teleop2 teleop_manual_drive_launch.py
 
     *Mapping*
-    cd ~/ENGR857_Salgado_Eriberto/ros2_ws
+    cd ~/ENGR857_Salgado_Eriberto/ENGR857_Salgado_Eriberto-main/ros2_ws
     rm -rf build install log
     source /opt/ros/humble/setup.bash
     colcon build --symlink-install --packages-select qbot_platform
     source install/setup.bash
     ros2 launch qbot_platform qbot_platform_manual_map_launch.py
 
+	source /opt/ros/humble/setup.bash
+	rviz2
+	
     ros2 topic list | grep map
     ros2 node list | grep cartographer
+
+	
+	
+	
 
     In a new terminal
     source /opt/ros/humble/setup.bash && source ~/ENGR857_Salgado_Eriberto/ros2_ws/install/setup.bash
     ros2 run nav2_map_server map_saver_cli -f ~/qbot_map
+    
+    cd ~/ENGR857_Salgado_Eriberto/ENGR857_Salgado_Eriberto-main/ros2_ws
+    rm -rf build install log
+    source /opt/ros/humble/setup.bash
+    colcon build --symlink-install --packages-select teleop
+    source install/setup.bash
+    ros2 launch teleop teleop_manual_drive_launch.py 
+    
