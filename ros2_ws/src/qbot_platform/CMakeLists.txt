@@ -11,6 +11,7 @@ find_package(cv_bridge REQUIRED)
 find_package(image_transport REQUIRED)
 find_package(OpenCV REQUIRED COMPONENTS highgui imgcodecs imgproc videoio)
 find_package(rclcpp REQUIRED)
+find_package(ament_index_cpp REQUIRED)
 
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
@@ -56,7 +57,7 @@ ament_target_dependencies(csi rclcpp cv_bridge image_transport OpenCV std_msgs s
 
 add_executable(command src/command.cpp)
 target_link_libraries(command -lquanser_devices -lquanser_communications -lquanser_runtime -lquanser_common)
-ament_target_dependencies(command rclcpp geometry_msgs sensor_msgs std_msgs)
+ament_target_dependencies(command rclcpp ament_index_cpp geometry_msgs sensor_msgs std_msgs)
 
 
 # TF
@@ -101,6 +102,12 @@ install(DIRECTORY rt_models
 # Install configuration needed for the cartographer node
 install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}/
+)
+
+install(FILES
+  AwaitingPickup.mp3
+  GoHome.mp3
+  DESTINATION share/${PROJECT_NAME}/audio
 )
 
 if(BUILD_TESTING)
