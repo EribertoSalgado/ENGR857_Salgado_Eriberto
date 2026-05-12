@@ -63,7 +63,6 @@ public:
             "go_home_audio_file",
             "audio/GoHome.mp3");
         this->declare_parameter("awaiting_pickup_repeat_seconds", 30.0);
-        this->declare_parameter("delivery_stop_wait_seconds", 15.0);
 
         move_duration_ = std::chrono::duration<double>(
             kDistanceMeters / kForwardSpeedMetersPerSecond);
@@ -244,20 +243,6 @@ private:
     {
         publish_velocity(0.0, 0.0);
         publish_green();
-
-        const double wait_seconds =
-            this->get_parameter("delivery_stop_wait_seconds").as_double();
-        if (wait_seconds > 0.0 &&
-            now - state_start_time_ >= std::chrono::duration<double>(wait_seconds))
-        {
-            transition_to(MotionState::ReturningHome, now);
-            play_go_home_audio();
-            RCLCPP_INFO(
-                this->get_logger(),
-                "Delivery wait finished after %.1f seconds. Returning home.",
-                wait_seconds);
-            return;
-        }
 
         if (!buttons.y)
         {
