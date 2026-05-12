@@ -104,6 +104,10 @@ install(DIRECTORY config
   DESTINATION share/${PROJECT_NAME}/
 )
 
+install(DIRECTORY web
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 install(FILES
   AwaitingPickup.mp3
   GoHome.mp3

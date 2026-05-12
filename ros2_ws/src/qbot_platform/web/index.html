@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QBot Platform Fleet</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef2f5;
+      --panel: #ffffff;
+      --ink: #17202a;
+      --muted: #5c6975;
+      --line: #cad3dc;
+      --ok: #0f8a5f;
+      --warn: #b76b00;
+      --bad: #b3261e;
+      --blue: #1463d8;
+      --blue-dark: #0f4fad;
+      --green: #12805c;
+      --green-dark: #0d6649;
+      --shadow: 0 18px 45px rgba(21, 31, 43, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(20, 99, 216, 0.12), transparent 32%),
+        linear-gradient(315deg, rgba(18, 128, 92, 0.12), transparent 30%),
+        var(--bg);
+    }
+
+    main {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 36px 0;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(23, 32, 42, 0.08);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .control-panel {
+      padding: 28px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 12px 0 0;
+      max-width: 50rem;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      background: #f8fafc;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      margin-right: 8px;
+      border-radius: 999px;
+      background: var(--warn);
+    }
+
+    .status-dot.connected {
+      background: var(--ok);
+    }
+
+    .status-dot.disconnected {
+      background: var(--bad);
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    button {
+      min-height: 132px;
+      border: 0;
+      border-radius: 8px;
+      padding: 22px;
+      color: #ffffff;
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: 0;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(20, 99, 216, 0.22);
+      transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(20, 99, 216, 0.28);
+    }
+
+    button:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      filter: grayscale(0.35);
+      opacity: 0.55;
+      box-shadow: none;
+    }
+
+    .go-button {
+      background: linear-gradient(180deg, var(--blue), var(--blue-dark));
+    }
+
+    .return-button {
+      background: linear-gradient(180deg, var(--green), var(--green-dark));
+    }
+
+    .camera-feed {
+      margin-top: 22px;
+      text-align: center;
+    }
+
+    .camera-feed h2 {
+      margin: 0 0 12px;
+      font-size: 1.5rem;
+      color: var(--ink);
+    }
+
+    .settings-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+      gap: 18px;
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: 72px minmax(90px, 1fr) 72px;
+      align-items: center;
+      min-height: 130px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .node {
+      display: grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .home-node {
+      background: var(--green);
+    }
+
+    .destination-node {
+      background: var(--blue);
+    }
+
+    .track {
+      height: 8px;
+      margin: 0 12px;
+      border-radius: 999px;
+      background: repeating-linear-gradient(
+        90deg,
+        #9aa8b5 0,
+        #9aa8b5 16px,
+        transparent 16px,
+        transparent 28px
+      );
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    input {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0 12px;
+      color: var(--ink);
+      font: inherit;
+      background: #ffffff;
+    }
+
+    input:focus {
+      outline: 3px solid rgba(20, 99, 216, 0.18);
+      border-color: var(--blue);
+    }
+
+    .topic {
+      min-height: 48px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #eef2f5;
+      color: var(--muted);
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.9rem;
+      overflow-wrap: anywhere;
+    }
+
+    .log {
+      min-height: 54px;
+      margin-top: auto;
+      padding: 12px;
+      border-left: 4px solid var(--blue);
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 760px) {
+      main {
+        width: min(100% - 22px, 620px);
+        padding: 20px 0;
+      }
+
+      .shell,
+      .button-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .control-panel,
+      .settings-panel {
+        padding: 18px;
+      }
+
+      button {
+        min-height: 102px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <section class="panel control-panel" aria-labelledby="page-title">
+        <h1 id="page-title">QBot Platform Fleet</h1>
+        <p class="subtitle">Send the QBot to the delivery stop, then call it back home.</p>
+
+        <div class="status-row" aria-live="polite">
+          <span class="pill">
+            <span id="statusDot" class="status-dot"></span>
+            <span id="connectionStatus">Connecting</span>
+          </span>
+          <span id="lastCommand" class="pill">Ready</span>
+        </div>
+
+        <div class="button-grid">
+          <button id="goButton" class="go-button" type="button" disabled>
+            Go to Destination
+          </button>
+          <button id="returnButton" class="return-button" type="button" disabled>
+            Return Home
+          </button>
+        </div>
+
+        <div class="camera-feed">
+          <h2>Camera Feed</h2>
+          <img src="http://192.168.0.72:8080/" alt="Camera Feed" style="width: 100%; max-width: 640px; height: auto; border: 1px solid var(--line); border-radius: 8px;">
+        </div>
+      </section>
+
+      <aside class="panel settings-panel" aria-label="Connection settings">
+        <div class="route" aria-hidden="true">
+          <div class="node home-node">Home</div>
+          <div class="track"></div>
+          <div class="node destination-node">Dest</div>
+        </div>
+
+        <div>
+          <label for="rosbridgeUrl">Rosbridge WebSocket</label>
+          <input id="rosbridgeUrl" value="ws://localhost:9090" autocomplete="off">
+        </div>
+
+        <div>
+          <label for="robotNamespace">Robot Namespace</label>
+          <input id="robotNamespace" placeholder="blank for /qbot_fleet_command" autocomplete="off">
+        </div>
+
+        <div>
+          <label>Command Topic</label>
+          <div id="topicName" class="topic">/qbot_fleet_command</div>
+        </div>
+
+        <div id="eventLog" class="log" aria-live="polite">
+          Waiting for rosbridge.
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const COMMAND_TOPIC = "qbot_fleet_command";
+    const DESTINATION_COMMAND = "go_destination";
+    const RETURN_COMMAND = "return_home";
+    const STORAGE_URL_KEY = "qbot_platform_rosbridge_url";
+    const STORAGE_NAMESPACE_KEY = "qbot_platform_namespace";
+
+    const rosbridgeUrlInput = document.getElementById("rosbridgeUrl");
+    const robotNamespaceInput = document.getElementById("robotNamespace");
+    const topicName = document.getElementById("topicName");
+    const statusDot = document.getElementById("statusDot");
+    const connectionStatus = document.getElementById("connectionStatus");
+    const lastCommand = document.getElementById("lastCommand");
+    const eventLog = document.getElementById("eventLog");
+    const goButton = document.getElementById("goButton");
+    const returnButton = document.getElementById("returnButton");
+
+    let socket = null;
+    let reconnectTimer = null;
+    let advertisedTopic = "";
+    let reconnectDelayMs = 1200;
+
+    const storedUrl = window.localStorage.getItem(STORAGE_URL_KEY);
+    const storedNamespace = window.localStorage.getItem(STORAGE_NAMESPACE_KEY);
+
+    if (storedUrl) {
+      rosbridgeUrlInput.value = storedUrl;
+    }
+
+    if (storedNamespace) {
+      robotNamespaceInput.value = storedNamespace;
+    }
+
+    function normalizeNamespace(value) {
+      return value.trim().replace(/^\/+|\/+$/g, "");
+    }
+
+    function getCommandTopic() {
+      const namespace = normalizeNamespace(robotNamespaceInput.value);
+      return namespace ? `/${namespace}/${COMMAND_TOPIC}` : `/${COMMAND_TOPIC}`;
+    }
+
+    function renderTopicName() {
+      topicName.textContent = getCommandTopic();
+    }
+
+    function setConnectedState(state, message) {
+      statusDot.classList.remove("connected", "disconnected");
+      if (state === "connected") {
+        statusDot.classList.add("connected");
+      } else if (state === "disconnected") {
+        statusDot.classList.add("disconnected");
+      }
+
+      connectionStatus.textContent = message;
+      const canSend = state === "connected";
+      goButton.disabled = !canSend;
+      returnButton.disabled = !canSend;
+    }
+
+    function writeLog(message) {
+      eventLog.textContent = message;
+    }
+
+    function sendToRosbridge(payload) {
+      if (!socket || socket.readyState !== WebSocket.OPEN) {
+        writeLog("Rosbridge is not connected.");
+        return false;
+      }
+
+      socket.send(JSON.stringify(payload));
+      return true;
+    }
+
+    function advertiseCommandTopic() {
+      const nextTopic = getCommandTopic();
+
+      if (advertisedTopic && advertisedTopic !== nextTopic) {
+        sendToRosbridge({
+          op: "unadvertise",
+          topic: advertisedTopic
+        });
+      }
+
+      sendToRosbridge({
+        op: "advertise",
+        topic: nextTopic,
+        type: "std_msgs/String"
+      });
+
+      advertisedTopic = nextTopic;
+      renderTopicName();
+    }
+
+    function publishCommand(command, label) {
+      advertiseCommandTopic();
+
+      const sent = sendToRosbridge({
+        op: "publish",
+        topic: getCommandTopic(),
+        msg: {
+          data: command
+        }
+      });
+
+      if (!sent) {
+        return;
+      }
+
+      lastCommand.textContent = label;
+      writeLog(`${label} sent on ${getCommandTopic()}.`);
+    }
+
+    function clearReconnectTimer() {
+      if (reconnectTimer) {
+        window.clearTimeout(reconnectTimer);
+        reconnectTimer = null;
+      }
+    }
+
+    function scheduleReconnect() {
+      clearReconnectTimer();
+      reconnectTimer = window.setTimeout(connect, reconnectDelayMs);
+      reconnectDelayMs = Math.min(reconnectDelayMs + 800, 6000);
+    }
+
+    function connect() {
+      clearReconnectTimer();
+
+      if (socket) {
+        socket.onclose = null;
+        socket.close();
+      }
+
+      const url = rosbridgeUrlInput.value.trim() || "ws://localhost:9090";
+      window.localStorage.setItem(STORAGE_URL_KEY, url);
+      setConnectedState("connecting", "Connecting");
+      writeLog(`Opening ${url}.`);
+
+      try {
+        socket = new WebSocket(url);
+      } catch (error) {
+        setConnectedState("disconnected", "Disconnected");
+        writeLog(error.message);
+        scheduleReconnect();
+        return;
+      }
+
+      socket.onopen = () => {
+        reconnectDelayMs = 1200;
+        setConnectedState("connected", "Connected");
+        advertiseCommandTopic();
+        writeLog(`Connected to ${url}.`);
+      };
+
+      socket.onclose = () => {
+        advertisedTopic = "";
+        setConnectedState("disconnected", "Disconnected");
+        writeLog("Rosbridge connection closed.");
+        scheduleReconnect();
+      };
+
+      socket.onerror = () => {
+        setConnectedState("disconnected", "Disconnected");
+        writeLog("Rosbridge connection error.");
+      };
+
+      socket.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data);
+          if (message.op === "status" && message.level === "error") {
+            writeLog(message.msg || "Rosbridge reported an error.");
+          }
+        } catch (error) {
+          writeLog("Received a non-JSON rosbridge message.");
+        }
+      };
+    }
+
+    goButton.addEventListener("click", () => {
+      publishCommand(DESTINATION_COMMAND, "Destination command");
+    });
+
+    returnButton.addEventListener("click", () => {
+      publishCommand(RETURN_COMMAND, "Return command");
+    });
+
+    rosbridgeUrlInput.addEventListener("change", connect);
+
+    rosbridgeUrlInput.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        connect();
+      }
+    });
+
+    robotNamespaceInput.addEventListener("input", () => {
+      window.localStorage.setItem(STORAGE_NAMESPACE_KEY, robotNamespaceInput.value);
+      renderTopicName();
+
+      if (socket && socket.readyState === WebSocket.OPEN) {
+        advertiseCommandTopic();
+      }
+    });
+
+    renderTopicName();
+    connect();
+  </script>
+</body>
+</html>

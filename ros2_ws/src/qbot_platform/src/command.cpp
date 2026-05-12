@@ -16,6 +16,7 @@
 #include "geometry_msgs/msg/twist.hpp"
 #include "sensor_msgs/msg/laser_scan.hpp"
 #include "std_msgs/msg/color_rgba.hpp"
+#include "std_msgs/msg/string.hpp"
 
 #include "quanser/quanser_hid.h"
 #include "quanser/quanser_messages.h"
@@ -33,6 +34,15 @@ public:
 
         led_publisher_ =
             this->create_publisher<std_msgs::msg::ColorRGBA>("qbot_led_strip", 10);
+
+        fleet_command_subscriber_ =
+            this->create_subscription<std_msgs::msg::String>(
+                "qbot_fleet_command",
+                10,
+                std::bind(
+                    &CommandPublisher::fleet_command_callback,
+                    this,
+                    std::placeholders::_1));
 
         scan_subscriber_ =
             this->create_subscription<sensor_msgs::msg::LaserScan>(
@@ -84,7 +94,7 @@ public:
 
         RCLCPP_INFO(
             this->get_logger(),
-            "Delivery bot ready. Press A to deliver, then press Y to return home.");
+            "Delivery bot ready. Press A or send go_destination, then press Y or send return_home.");
 
         timer_ = this->create_wall_timer(
             50ms, std::bind(&CommandPublisher::timer_callback, this));
@@ -199,7 +209,7 @@ private:
         transition_to(MotionState::SignalingMove, now);
         RCLCPP_INFO(
             this->get_logger(),
-            "A pressed. Signaling intent to move for %.1f seconds.",
+            "Destination command received. Signaling intent to move for %.1f seconds.",
             kSafetyDelayMilliseconds / 1000.0);
     }
 
@@ -260,7 +270,7 @@ private:
 
         transition_to(MotionState::ReturningHome, now);
         play_go_home_audio();
-        RCLCPP_INFO(this->get_logger(), "Y pressed. Returning home.");
+        RCLCPP_INFO(this->get_logger(), "Return command received. Returning home.");
     }
 
     void handle_returning_home(const std::chrono::steady_clock::time_point & now)
@@ -329,6 +339,11 @@ private:
     {
         ButtonPresses presses;
 
+        presses.a = web_go_destination_requested_;
+        presses.y = web_return_home_requested_;
+        web_go_destination_requested_ = false;
+        web_return_home_requested_ = false;
+
         if (!controller_open_)
         {
             return presses;
@@ -350,12 +365,34 @@ private:
         const bool a_is_down = (controller_state_.buttons & kAButtonMask) != 0;
         const bool y_is_down = (controller_state_.buttons & kYButtonMask) != 0;
 
-        presses.a = a_is_down && !a_was_down_;
-        presses.y = y_is_down && !y_was_down_;
+        presses.a = presses.a || (a_is_down && !a_was_down_);
+        presses.y = presses.y || (y_is_down && !y_was_down_);
 
         a_was_down_ = a_is_down;
         y_was_down_ = y_is_down;
         return presses;
+    }
+
+    void fleet_command_callback(const std_msgs::msg::String::SharedPtr msg)
+    {
+        if (msg->data == "go_destination")
+        {
+            web_go_destination_requested_ = true;
+            RCLCPP_INFO(this->get_logger(), "Fleet web command: go_destination.");
+            return;
+        }
+
+        if (msg->data == "return_home")
+        {
+            web_return_home_requested_ = true;
+            RCLCPP_INFO(this->get_logger(), "Fleet web command: return_home.");
+            return;
+        }
+
+        RCLCPP_WARN(
+            this->get_logger(),
+            "Ignoring unknown fleet web command '%s'.",
+            msg->data.c_str());
     }
 
     void scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr scan)
@@ -692,6 +729,7 @@ private:
     rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr command_publisher_;
     rclcpp::Publisher<std_msgs::msg::ColorRGBA>::SharedPtr led_publisher_;
+    rclcpp::Subscription<std_msgs::msg::String>::SharedPtr fleet_command_subscriber_;
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_subscriber_;
 
     t_game_controller gamepad_;
@@ -708,6 +746,8 @@ private:
     bool controller_open_ = false;
     bool a_was_down_ = false;
     bool y_was_down_ = false;
+    bool web_go_destination_requested_ = false;
+    bool web_return_home_requested_ = false;
     bool awaiting_pickup_audio_has_played_ = false;
     bool obstacle_in_front_ = false;
     bool previous_obstacle_in_front_ = false;

@@ -147,3 +147,17 @@ Case 3: Failed Pickup/Timeout Recovery
     Blinking Green: moving to home
         Audio Cue: no speech, sound only
     Solid Blue: waiting for order
+
+Run these on the QBot, from ros2_ws:
+
+cd ~/ENGR857_Salgado_Eriberto/ENGR857_Salgado_Eriberto-main/ros2_ws
+rm -rf build/qbot_platform install/qbot_platform
+colcon build --packages-select qbot_platform
+source install/setup.bash
+ros2 launch qbot_platform qbot_platform_manual_drive_launch.py
+
+*2 feet = 0.6096 for Lidar is this command*
+ros2 param set /joysticCommands front_obstacle_distance 0.6096
+
+*to change movement of bot it is near line 120*
+static constexpr double kDistanceMeters = 0.6096;
