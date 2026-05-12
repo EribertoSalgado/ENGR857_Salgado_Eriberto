@@ -41,7 +41,7 @@ TRAJECTORY_BUILDER_2D.num_accumulated_range_data = 1
 TRAJECTORY_BUILDER_2D.adaptive_voxel_filter.max_range = 6
 TRAJECTORY_BUILDER_2D.loop_closure_adaptive_voxel_filter.max_range = 6
 
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 90
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 1
 
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.occupied_space_weight = 1
 TRAJECTORY_BUILDER_2D.ceres_scan_matcher.ceres_solver_options.num_threads = 1

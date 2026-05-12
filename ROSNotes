@@ -117,7 +117,7 @@ SSHed to Robot:
 Case 1: Normal Delivery Flow
     Solid Blue: waiting for order
     Solid Yellow: notice to move
-    Blinking Green: moving 
+    Blinking Green: moving 2 feet
     Solid Green: ready for pick up
         Audio Cue: no speech, sound only
     Blinking Green: moving to home
@@ -127,8 +127,9 @@ Case 1: Normal Delivery Flow
 Case 2: Obstacle/Yielding interaction
     Solid Blue: waiting for order
     Solid Yellow: notice to move
-    Blinking Green: moving 
-        Blinking Yellow: uses lidar to stop x feet away from the object then will move once path is clear.
+    Blinking Green: moving 2 feet
+        Blinking Yellow: uses lidar to stop if an object is within 1 foot, then moves once the path is clear.
+        Lidar only stops the robot; it does not steer or move the robot.
     Solid Green: ready for pick up
         Audio Cue: no speech, sound only
     Blinking Green: moving to home
@@ -138,10 +139,11 @@ Case 2: Obstacle/Yielding interaction
 Case 3: Failed Pickup/Timeout Recovery    
     Solid Blue: waiting for order
     Solid Yellow: notice to move
-    Blinking Green: moving 
+    Blinking Green: moving 2 feet
     Solid Green: ready for pick up
         Audio Cue: no speech, sound only
-        Loops: loops audio showing the user did not pick up the object and returns home.
+        Loops: repeats audio every 15 seconds showing the user did not pick up the object.
+        Timeout: returns home if pickup is not confirmed after 45 seconds.
     Blinking Green: moving to home
         Audio Cue: no speech, sound only
     Solid Blue: waiting for order
