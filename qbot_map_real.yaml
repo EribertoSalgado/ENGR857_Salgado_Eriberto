@@ -1,4 +1,4 @@
-image: qbot_map.pgm
+image: qbot_map_real.pgm
 mode: trinary
 resolution: 0.01
 origin: [3.4e+36, -3.4e+36, 0]

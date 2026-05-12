@@ -92,25 +92,56 @@ SSHed to Robot:
     source install/setup.bash
     ros2 launch qbot_platform qbot_platform_manual_map_launch.py
 
-	source /opt/ros/humble/setup.bash
-	rviz2
-	
+    *Saving the Map in new terminal*
+    cd ~/ENGR857_Salgado_Eriberto/ENGR857_Salgado_Eriberto-main/ros2_ws
+    source /opt/ros/humble/setup.bash
+    source install/setup.bash
+    ros2 run nav2_map_server map_saver_cli -f ~/qbot_map
+
     ros2 topic list | grep map
     ros2 node list | grep cartographer
-
-	
-	
-	
 
     In a new terminal
     source /opt/ros/humble/setup.bash && source ~/ENGR857_Salgado_Eriberto/ros2_ws/install/setup.bash
     ros2 run nav2_map_server map_saver_cli -f ~/qbot_map
-    
+
     cd ~/ENGR857_Salgado_Eriberto/ENGR857_Salgado_Eriberto-main/ros2_ws
-    rm -rf build install log
     source /opt/ros/humble/setup.bash
     colcon build --symlink-install --packages-select teleop
     source install/setup.bash
-    ros2 launch teleop teleop_manual_drive_launch.py 
-    
-    
+    ros2 launch teleop teleop_manual_drive_launch.py
+
+
+
+
+Case 1: Normal Delivery Flow
+    Solid Blue: waiting for order
+    Solid Yellow: notice to move
+    Blinking Green: moving 
+    Solid Green: ready for pick up
+        Audio Cue: no speech, sound only
+    Blinking Green: moving to home
+        Audio Cue: no speech, sound only
+    Solid Blue: waiting for order
+
+Case 2: Obstacle/Yielding interaction
+    Solid Blue: waiting for order
+    Solid Yellow: notice to move
+    Blinking Green: moving 
+        Blinking Yellow: uses lidar to stop x feet away from the object then will move once path is clear.
+    Solid Green: ready for pick up
+        Audio Cue: no speech, sound only
+    Blinking Green: moving to home
+        Audio Cue: no speech, sound only
+    Solid Blue: waiting for order
+
+Case 3: Failed Pickup/Timeout Recovery    
+    Solid Blue: waiting for order
+    Solid Yellow: notice to move
+    Blinking Green: moving 
+    Solid Green: ready for pick up
+        Audio Cue: no speech, sound only
+        Loops: loops audio showing the user did not pick up the object and returns home.
+    Blinking Green: moving to home
+        Audio Cue: no speech, sound only
+    Solid Blue: waiting for order
